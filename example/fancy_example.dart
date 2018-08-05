@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      //Add Route to the main Page.
       routes: {'/mainPage': (context) => MainPage()},
       title: 'Fancy OnBoarding Demo',
       theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'Nunito'),
@@ -30,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  //Create a list of PageModel to be set on the onBoarding Screens.
   final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
@@ -86,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Pass pageList and the mainPage route.
       body: FancyOnBoarding(
         pageList: pageList,
         mainPageRoute: '/mainPage',
