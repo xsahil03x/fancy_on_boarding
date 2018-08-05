@@ -5,7 +5,7 @@
 #### A Fancy OnBoarding Screen Library for Easy and Quick Usage.
 
 * Checkout the Original Author : [![GitHub](https://img.shields.io/github/stars/matthew-carroll/flutter_ui_challenge_material_page_reveal.svg?style=social&label=Follow)](https://github.com/matthew-carroll/flutter_ui_challenge_material_page_reveal)
-* Checkout the Original Designer : [![GitHub](https://img.shields.io/github/stars/Ramotion/paper-onboarding-android.svg?style=social&label=Stars)](https://github.com/Ramotion/paper-onboarding-android)
+* Checkout the Original Designer : [![GitHub](https://img.shields.io/github/stars/Ramotion/paper-onboarding-android.svg?style=social&label=Follow)](https://github.com/Ramotion/paper-onboarding-android)
 
 The source code is **100% Dart**, and everything resides in the [/lib](https://github.com/xsahil03x/fancy_on_boarding/tree/master/lib) folder.
 
