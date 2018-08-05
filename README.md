@@ -3,7 +3,8 @@
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/xsahil03x) [![Twitter](https://img.shields.io/twitter/url/https/github.com/xsahil03x/fancy_on_boarding.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fxsahil03x%2Ffancy_on_boarding)
 
 A Fancy OnBoarding Screen Library for Easy and Quick Usage.
-
+* Checkout the Original Author : [![GitHub followers](https://img.shields.io/github/stars/matthew-carroll/flutter_ui_challenge_material_page_reveal.svg?style=social&label=Follow)](https://github.com/matthew-carroll/flutter_ui_challenge_material_page_reveal)
+* Checkout the Original Designer : [![GitHub followers](https://img.shields.io/github/stars/Ramotion/paper-onboarding-android.svg?style=social&label=Follow)](https://github.com/Ramotion/paper-onboarding-android)
 The source code is **100% Dart**, and everything resides in the [/lib](https://github.com/xsahil03x/fancy_on_boarding/tree/master/lib) folder.
 
 
