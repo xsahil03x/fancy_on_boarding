@@ -89,10 +89,15 @@ In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ### Pass it into the FancyOnBoarding() method
 ```
-@override
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(body: FancyOnBoarding(pageList: pageList));
-}
+    return Scaffold(
+      body: FancyOnBoarding(
+        pageList: pageList,
+        mainPageRoute: '/mainPage',
+      ),
+    );
+  }
 ```
 
 ## 🎨 Customization and Attributes
@@ -126,6 +131,11 @@ All customizable attributes for ClapFab
         <td>iconAssetPath</td>
         <td>'assets/wallet.png'</td>
         <td>Icon for the floating bubble</td>
+    </tr>
+    <tr>
+        <td>mainPageRoute</td>
+        <td>'mainPage'</td>
+        <td>Route of the main page</td>
     </tr>
     
 </table>

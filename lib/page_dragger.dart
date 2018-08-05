@@ -4,25 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:fancy_on_boarding/pager_indicator.dart';
 
 class PageDragger extends StatefulWidget {
-
+  final int currentIndex;
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
+  final int pageLength;
+  final String mainPageRoute;
   final StreamController<SlideUpdate> slideUpdateStream;
 
   PageDragger({
+    this.mainPageRoute,
+    this.pageLength,
+    this.currentIndex,
     this.canDragLeftToRight,
     this.canDragRightToLeft,
     this.slideUpdateStream,
   });
 
   @override
-  _PageDraggerState createState() =>  _PageDraggerState();
+  _PageDraggerState createState() => _PageDraggerState();
 }
 
 class _PageDraggerState extends State<PageDragger> {
-
   static const FULL_TRANSITION_PX = 300.0;
 
+  int nextPageIndex;
   Offset dragStart;
   SlideDirection slideDirection;
   double slidePercent = 0.0;
@@ -49,25 +54,22 @@ class _PageDraggerState extends State<PageDragger> {
         slidePercent = 0.0;
       }
 
-      widget.slideUpdateStream.add(
-        SlideUpdate(
-          UpdateType.dragging,
-          slideDirection,
-          slidePercent
-        )
-      );
+      widget.slideUpdateStream
+          .add(SlideUpdate(UpdateType.dragging, slideDirection, slidePercent));
     }
   }
 
   onDragEnd(DragEndDetails details) {
-    widget.slideUpdateStream.add(
-      SlideUpdate(
+    if (slideDirection == SlideDirection.none &&
+        widget.currentIndex == widget.pageLength) {
+      Navigator.pushReplacementNamed(context, widget.mainPageRoute);
+    } else {
+      widget.slideUpdateStream.add(SlideUpdate(
         UpdateType.doneDragging,
         SlideDirection.none,
         0.0,
-      )
-    );
-
+      ));
+    }
     dragStart = null;
   }
 
@@ -82,7 +84,6 @@ class _PageDraggerState extends State<PageDragger> {
 }
 
 class AnimatedPageDragger {
-
   static const PERCENT_PER_MILLISECOND = 0.005;
 
   final slideDirection;
@@ -104,46 +105,38 @@ class AnimatedPageDragger {
     if (transitionGoal == TransitionGoal.open) {
       endSlidePercent = 1.0;
       final slideRemaining = 1.0 - slidePercent;
-      duration =  Duration(
-          milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round()
-      );
+      duration = Duration(
+          milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round());
     } else {
       endSlidePercent = 0.0;
-      duration =  Duration(
-        milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round()
-      );
+      duration = Duration(
+          milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round());
     }
 
-    completionAnimationController =  AnimationController(
-      duration: duration,
-      vsync: vsync
-    )
-    ..addListener(() {
-      slidePercent = lerpDouble(
-        startSlidePercent,
-        endSlidePercent,
-        completionAnimationController.value,
-      );
+    completionAnimationController =
+        AnimationController(duration: duration, vsync: vsync)
+          ..addListener(() {
+            slidePercent = lerpDouble(
+              startSlidePercent,
+              endSlidePercent,
+              completionAnimationController.value,
+            );
 
-      slideUpdateStream.add(
-         SlideUpdate(
-          UpdateType.animating,
-          slideDirection,
-          slidePercent,
-        )
-      );
-    })
-    ..addStatusListener((AnimationStatus status) {
-      if (status == AnimationStatus.completed) {
-        slideUpdateStream.add(
-           SlideUpdate(
-            UpdateType.doneAnimating,
-            slideDirection,
-            endSlidePercent,
-          )
-        );
-      }
-    });
+            slideUpdateStream.add(SlideUpdate(
+              UpdateType.animating,
+              slideDirection,
+              slidePercent,
+            ));
+          })
+          ..addStatusListener((AnimationStatus status) {
+            if (status == AnimationStatus.completed) {
+              slideUpdateStream.add(SlideUpdate(
+                UpdateType.doneAnimating,
+                slideDirection,
+                endSlidePercent,
+              ));
+            }
+          });
   }
 
   run() {
