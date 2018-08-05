@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {'/second': (context) => MainPage()},
+      routes: {'/mainPage': (context) => MainPage()},
       title: 'Fancy OnBoarding Demo',
       theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'Nunito'),
       home: MyHomePage(title: 'Fancy OnBoarding HomePage'),
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: FancyOnBoarding(
         pageList: pageList,
-        mainPageRoute: '/second',
+        mainPageRoute: '/mainPage',
       ),
     );
   }
