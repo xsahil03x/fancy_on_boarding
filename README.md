@@ -5,6 +5,7 @@
 A Fancy OnBoarding Screen Library for Easy and Quick Usage.
 * Checkout the Original Author : [![GitHub followers](https://img.shields.io/github/stars/matthew-carroll/flutter_ui_challenge_material_page_reveal.svg?style=social&label=Follow)](https://github.com/matthew-carroll/flutter_ui_challenge_material_page_reveal)
 * Checkout the Original Designer : [![GitHub followers](https://img.shields.io/github/stars/Ramotion/paper-onboarding-android.svg?style=social&label=Follow)](https://github.com/Ramotion/paper-onboarding-android)
+
 The source code is **100% Dart**, and everything resides in the [/lib](https://github.com/xsahil03x/fancy_on_boarding/tree/master/lib) folder.
 
 
@@ -16,6 +17,9 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xsahil03x/fancy_on_boarding/blob/master/LICENSE)
 
+
+### GIF
+<img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>
 
 ## 💻 Installation
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
@@ -96,7 +100,7 @@ In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 All customizable attributes for ClapFab
 <table>
     <th>Attribute Name</th>
-    <th>Default Value</th>
+    <th>Example Value</th>
     <th>Description</th>
     <tr>
         <td>color</td>
