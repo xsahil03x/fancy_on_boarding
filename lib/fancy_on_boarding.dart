@@ -10,11 +10,13 @@ import 'package:flutter/material.dart';
 
 class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
+  final String mainPageRoute;
 
-  FancyOnBoarding({@required this.pageList}) : assert(pageList.length != 0);
+  FancyOnBoarding({@required this.pageList, @required this.mainPageRoute})
+      : assert(pageList.length != 0);
 
   @override
-  _FancyOnBoardingState createState() => _FancyOnBoardingState(pageList);
+  _FancyOnBoardingState createState() => _FancyOnBoardingState(pageList,mainPageRoute);
 }
 
 class _FancyOnBoardingState extends State<FancyOnBoarding>
@@ -23,13 +25,15 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
   AnimatedPageDragger animatedPageDragger;
 
   List<PageModel> pageList;
+  String mainPageRoute;
   int activeIndex = 0;
   int nextPageIndex = 0;
   SlideDirection slideDirection = SlideDirection.none;
   double slidePercent = 0.0;
 
-  _FancyOnBoardingState(List<PageModel> pageList) {
+  _FancyOnBoardingState(List<PageModel> pageList, String mainPageRoute) {
     this.pageList = pageList;
+    this.mainPageRoute = mainPageRoute;
     slideUpdateStream = StreamController<SlideUpdate>();
 
     slideUpdateStream.stream.listen((SlideUpdate event) {
@@ -109,7 +113,10 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
             slidePercent,
           ),
         ),
-         PageDragger(
+        PageDragger(
+          pageLength: pageList.length - 1,
+          currentIndex: activeIndex,
+          mainPageRoute: mainPageRoute,
           canDragLeftToRight: activeIndex > 0,
           canDragRightToLeft: activeIndex < pageList.length - 1,
           slideUpdateStream: this.slideUpdateStream,

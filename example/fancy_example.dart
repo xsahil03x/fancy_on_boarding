@@ -2,6 +2,8 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 import 'package:fancy_on_boarding/page_model.dart';
 import 'package:flutter/material.dart';
 
+import 'fancy_second_screen.dart';
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,11 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {'/second': (context) => MainPage()},
       title: 'Fancy OnBoarding Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Nunito',
-      ),
+      theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'Nunito'),
       home: MyHomePage(title: 'Fancy OnBoarding HomePage'),
     );
   }
@@ -84,6 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: FancyOnBoarding(pageList: pageList));
+    return Scaffold(
+      body: FancyOnBoarding(
+        pageList: pageList,
+        mainPageRoute: '/second',
+      ),
+    );
   }
 }
