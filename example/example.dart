@@ -2,7 +2,7 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 import 'package:fancy_on_boarding/page_model.dart';
 import 'package:flutter/material.dart';
 
-import 'fancy_second_screen.dart';
+import 'second_screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -31,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   //Create a list of PageModel to be set on the onBoarding Screens.
   final pageList = [
     PageModel(

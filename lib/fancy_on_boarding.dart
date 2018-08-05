@@ -16,7 +16,8 @@ class FancyOnBoarding extends StatefulWidget {
       : assert(pageList.length != 0);
 
   @override
-  _FancyOnBoardingState createState() => _FancyOnBoardingState(pageList,mainPageRoute);
+  _FancyOnBoardingState createState() =>
+      _FancyOnBoardingState(pageList, mainPageRoute);
 }
 
 class _FancyOnBoardingState extends State<FancyOnBoarding>

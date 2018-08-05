@@ -30,6 +30,12 @@ In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ## ❔ Usage
 
+### Import these classes
+```
+import 'package:fancy_on_boarding/fancy_on_boarding.dart';
+import 'package:fancy_on_boarding/page_model.dart';
+```
+
 ### Create a List of PageModel
 
 ```
@@ -140,12 +146,6 @@ All customizable attributes for ClapFab
     
 </table>
 
-
-## 👨 Connect with me
-<a href="https://twitter.com/xsahil03x"><img src="https://github.com/aritraroy/social-icons/blob/master/twitter-icon.png?raw=true" width="60"></a>
-<a href="https://linkedin.com/in/xsahil03x"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
-<a href="https://facebook.com/xsahil03x"><img src="https://github.com/aritraroy/social-icons/blob/master/facebook-icon.png?raw=true" width="60"></a>
-<a href="https://instagram.com/xsahil03x"><img src="https://github.com/aritraroy/social-icons/blob/master/instagram-icon.png?raw=true" width="60"></a>
 
 # 👍 How to Contribute
 1. Fork it
