@@ -7,12 +7,12 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return  MaterialApp(
       title: 'Fancy OnBoarding Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Fancy OnBoarding HomePage'),
+      home: MyHomePage(title: 'Fancy OnBoarding HomePage'),
     );
   }
 }
@@ -28,61 +28,61 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final pageList = [
-    new PageModel(
+     PageModel(
         color: const Color(0xFF678FB4),
         heroAssetPath: 'assets/hotels.png',
-        title: new Text(
+        title: Text(
           'Hotels',
-          style: new TextStyle(
+          style:  TextStyle(
             color: Colors.white,
             fontFamily: 'FlamanteRoma',
             fontSize: 34.0,
           ),
         ),
-        body: new Text(
+        body: Text(
           'All hotels and hostels are sorted by hospitality rating',
           textAlign: TextAlign.center,
-          style: new TextStyle(
+          style: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
           ),
         ),
         iconAssetPath: 'assets/key.png'),
-    new PageModel(
+    PageModel(
         color: const Color(0xFF65B0B4),
         heroAssetPath: 'assets/banks.png',
-        title: new Text(
+        title: Text(
           'Banks',
-          style: new TextStyle(
+          style: TextStyle(
             color: Colors.white,
             fontFamily: 'FlamanteRoma',
             fontSize: 34.0,
           ),
         ),
-        body: new Text(
+        body: Text(
           'We carefully verify all banks before adding them into the app',
           textAlign: TextAlign.center,
-          style: new TextStyle(
+          style: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
           ),
         ),
         iconAssetPath: 'assets/wallet.png'),
-    new PageModel(
+     PageModel(
       color: Colors.deepOrange,
       heroAssetPath: 'assets/stores.png',
-      title: new Text(
+      title: Text(
         'Store',
-        style: new TextStyle(
+        style: TextStyle(
           color: Colors.white,
           fontFamily: 'FlamanteRoma',
           fontSize: 34.0,
         ),
       ),
-      body: new Text(
+      body: Text(
         'All local stores are categorized for your convenience',
         textAlign: TextAlign.center,
-        style: new TextStyle(
+        style: TextStyle(
           color: Colors.white,
           fontSize: 18.0,
         ),
@@ -93,8 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        body: new FancyOnBoarding(
+    return Scaffold(
+        body: FancyOnBoarding(
       pageList: pageList,
     ));
   }

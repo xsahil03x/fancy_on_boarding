@@ -33,8 +33,8 @@ class PagerIndicator extends StatelessWidget {
               viewModel.slideDirection == SlideDirection.leftToRight);
 
       bubbles.add(
-        new PageBubble(
-          viewModel: new PageBubbleViewModel(
+         PageBubble(
+          viewModel:  PageBubbleViewModel(
             page.iconAssetPath,
             page.color,
             isHollow,
@@ -54,12 +54,12 @@ class PagerIndicator extends StatelessWidget {
       translation -= BUBBLE_WIDTH * viewModel.slidePercent;
     }
 
-    return new Column(
+    return  Column(
       children: [
-        new Expanded(child: new Container()),
-        new Transform(
-          transform: new Matrix4.translationValues(translation, 0.0, 0.0),
-          child: new Row(
+         Expanded(child:  Container()),
+         Transform(
+          transform:  Matrix4.translationValues(translation, 0.0, 0.0),
+          child:  Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: bubbles,
           ),
@@ -98,20 +98,20 @@ class PageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return  Container(
       width: 55.0,
       height: 65.0,
-      child: new Center(
-        child: new Container(
+      child:  Center(
+        child:  Container(
           width: lerpDouble(20.0, 45.0, viewModel.activePercent),
           height: lerpDouble(20.0, 45.0, viewModel.activePercent),
-          decoration: new BoxDecoration(
+          decoration:  BoxDecoration(
             shape: BoxShape.circle,
             color: viewModel.isHollow
                 ? const Color(0x88FFFFFF)
                     .withAlpha((0x88 * viewModel.activePercent).round())
                 : const Color(0x88FFFFFF),
-            border: new Border.all(
+            border:  Border.all(
               color: viewModel.isHollow
                   ? const Color(0x88FFFFFF).withAlpha(
                       (0x88 * (1.0 - viewModel.activePercent)).round())
@@ -119,9 +119,9 @@ class PageBubble extends StatelessWidget {
               width: 3.0,
             ),
           ),
-          child: new Opacity(
+          child:  Opacity(
             opacity: viewModel.activePercent,
-            child: new Image.asset(
+            child:  Image.asset(
               viewModel.iconAssetPath,
               color: viewModel.color,
             ),

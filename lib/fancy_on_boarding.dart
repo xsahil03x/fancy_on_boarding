@@ -30,7 +30,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
   _FancyOnBoardingState(List<PageModel> pageList) {
     this.pageList = pageList;
-    slideUpdateStream = new StreamController<SlideUpdate>();
+    slideUpdateStream = StreamController<SlideUpdate>();
 
     slideUpdateStream.stream.listen((SlideUpdate event) {
       setState(() {
@@ -49,7 +49,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         } else if (event.updateType == UpdateType.doneDragging) {
           print('Done dragging.');
           if (slidePercent > 0.5) {
-            animatedPageDragger = new AnimatedPageDragger(
+            animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.open,
               slidePercent: slidePercent,
@@ -57,7 +57,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
               vsync: this,
             );
           } else {
-            animatedPageDragger = new AnimatedPageDragger(
+            animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.close,
               slidePercent: slidePercent,
@@ -88,28 +88,28 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
   @override
   Widget build(BuildContext context) {
-    return new Stack(
+    return Stack(
       children: [
-        new Page(
+        Page(
           viewModel: pageList[activeIndex],
           percentVisible: 1.0,
         ),
-        new PageReveal(
+        PageReveal(
           revealPercent: slidePercent,
-          child: new Page(
+          child: Page(
             viewModel: pageList[nextPageIndex],
             percentVisible: slidePercent,
           ),
         ),
-        new PagerIndicator(
-          viewModel: new PagerIndicatorViewModel(
+        PagerIndicator(
+          viewModel: PagerIndicatorViewModel(
             pageList,
             activeIndex,
             slideDirection,
             slidePercent,
           ),
         ),
-        new PageDragger(
+         PageDragger(
           canDragLeftToRight: activeIndex > 0,
           canDragRightToLeft: activeIndex < pageList.length - 1,
           slideUpdateStream: this.slideUpdateStream,
