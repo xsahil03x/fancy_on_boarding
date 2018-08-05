@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Fancy OnBoarding Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         iconAssetPath: 'assets/wallet.png'),
     PageModel(
-      color: Colors.deepOrange,
+      color: const Color(0xFF9B90BC),
       heroAssetPath: 'assets/stores.png',
       title: Text(
         'Store',
@@ -94,9 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: FancyOnBoarding(
-      pageList: pageList,
-    ));
+    return Scaffold(body: FancyOnBoarding(pageList: pageList));
   }
 }
