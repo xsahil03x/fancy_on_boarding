@@ -7,10 +7,11 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Fancy OnBoarding Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Nunito',
       ),
       home: MyHomePage(title: 'Fancy OnBoarding HomePage'),
     );
@@ -28,14 +29,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final pageList = [
-     PageModel(
+    PageModel(
         color: const Color(0xFF678FB4),
         heroAssetPath: 'assets/hotels.png',
         title: Text(
           'Hotels',
-          style:  TextStyle(
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
             color: Colors.white,
-            fontFamily: 'FlamanteRoma',
             fontSize: 34.0,
           ),
         ),
@@ -54,8 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           'Banks',
           style: TextStyle(
+            fontWeight: FontWeight.w800,
             color: Colors.white,
-            fontFamily: 'FlamanteRoma',
             fontSize: 34.0,
           ),
         ),
@@ -68,14 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         iconAssetPath: 'assets/wallet.png'),
-     PageModel(
+    PageModel(
       color: Colors.deepOrange,
       heroAssetPath: 'assets/stores.png',
       title: Text(
         'Store',
         style: TextStyle(
+          fontWeight: FontWeight.w800,
           color: Colors.white,
-          fontFamily: 'FlamanteRoma',
           fontSize: 34.0,
         ),
       ),
