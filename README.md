@@ -24,9 +24,10 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 ## 💻 Installation
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
-```yaml
-  fancy_on_boarding: <latest_version>
 ```
+fancy_on_boarding: <latest_version>
+```
+`Current Version : ^0.0.2`
 
 ## ❔ Usage
 
