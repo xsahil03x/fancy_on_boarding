@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class PageModel {
   final Color color;
   final String heroAssetPath;
-  final Text title;
-  final Text body;
+  final Widget title;
+  final Widget body;
   final String iconAssetPath;
 
   PageModel({
