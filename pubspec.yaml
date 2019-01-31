@@ -14,44 +14,5 @@ dev_dependencies:
 
 environment:
   sdk: ">=2.0.0-dev.28.0 <3.0.0"
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
 
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
-  uses-material-design: true
-  # To add assets to your package, add an assets section, like this:
-  assets:
-  - assets/banks.png
-  - assets/hotels.png
-  - assets/key.png
-  - assets/shopping_cart.png
-  - assets/stores.png
-  - assets/wallet.png
-  #
-  # For details regarding assets in packages, see
-  # https://flutter.io/assets-and-images/#from-packages
-  #
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.io/assets-and-images/#resolution-aware.
-
-  # To add custom fonts to your package, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  fonts:
-  - family: Nunito
-    fonts:
-    - asset: assets/fonts/Nunito-Bold.ttf
-    - asset: assets/fonts/Nunito-Light.ttf
-    - asset: assets/fonts/Nunito-LightItalic.ttf
-    - asset: assets/fonts/Nunito-Regular.ttf
-    - asset: assets/fonts/Nunito-SemiBold.ttf
-  #
-  # For details regarding fonts in packages, see
-  # https://flutter.io/custom-fonts/#from-packages
