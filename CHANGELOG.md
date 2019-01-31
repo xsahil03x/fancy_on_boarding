@@ -1,3 +1,7 @@
+1.1.0
+
+    Add widget tests and description.
+
 1.0.0
 
     Fix various bugs and migrate to Flutter stable.
