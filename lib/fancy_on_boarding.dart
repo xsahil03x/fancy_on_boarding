@@ -125,4 +125,10 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
       ],
     );
   }
+
+  @override
+  void dispose() {
+    slideUpdateStream?.close();
+    super.dispose();
+  }
 }
