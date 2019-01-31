@@ -16,7 +16,7 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xsahil03x/fancy_on_boarding/blob/master/LICENSE)
-
+[![Build Status](https://travis-ci.com/xsahil03x/fancy_on_boarding.svg?branch=master)](https://travis-ci.com/xsahil03x/fancy_on_boarding)
 
 ### GIF
 <img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>
