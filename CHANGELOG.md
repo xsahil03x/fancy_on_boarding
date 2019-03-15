@@ -1,3 +1,7 @@
+1.2.0
+
+    Update flutter SDK.
+
 1.1.0
 
     Add widget tests and description.
