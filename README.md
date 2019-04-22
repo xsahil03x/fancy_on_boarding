@@ -33,14 +33,14 @@ fancy_on_boarding: <latest_version>
 ## ❔ Usage
 
 ### Import these classes
-```
+```dart
 import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 import 'package:fancy_on_boarding/page_model.dart';
 ```
 
 ### Create a List of PageModel
 
-```
+```dart
  final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
@@ -96,7 +96,7 @@ import 'package:fancy_on_boarding/page_model.dart';
 ```
 
 ### Pass it into the FancyOnBoarding() method
-```
+```dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
