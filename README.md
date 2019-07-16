@@ -110,7 +110,7 @@ import 'package:fancy_on_boarding/page_model.dart';
 
 ## 🎨 Customization and Attributes
 
-All customizable attributes for ClapFab
+All customizable attributes for FancyOnBoarding
 <table>
     <th>Attribute Name</th>
     <th>Example Value</th>
