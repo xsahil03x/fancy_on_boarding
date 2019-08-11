@@ -33,14 +33,14 @@ fancy_on_boarding: <latest_version>
 ## ❔ Usage
 
 ### Import these classes
-```
+```dart
 import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 import 'package:fancy_on_boarding/page_model.dart';
 ```
 
 ### Create a List of PageModel
 
-```
+```dart
  final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
@@ -96,7 +96,7 @@ import 'package:fancy_on_boarding/page_model.dart';
 ```
 
 ### Pass it into the FancyOnBoarding() method
-```
+```dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +110,29 @@ import 'package:fancy_on_boarding/page_model.dart';
 
 ## 🎨 Customization and Attributes
 
-All customizable attributes for ClapFab
+#### FancyOnBoarding attributes
+<table>
+    <th>Attribute Name</th>
+    <th>Example Value</th>
+    <th>Description</th>
+    <tr>
+        <td>pageList</td>
+        <td>List<PageModel></td>
+        <td>The list of pages to be displayed</td>
+    </tr>
+    <tr>
+        <td>mainPageRoute</td>
+        <td>'mainPage'</td>
+        <td>Route of the main page</td>
+    </tr>
+    <tr>
+        <td>buttonText</td>
+        <td>"Get Started"</td>
+        <td>Button text content defaults to "Done"</td>
+    </tr>
+</table>
+
+#### PageModel attributes 
 <table>
     <th>Attribute Name</th>
     <th>Example Value</th>
@@ -126,6 +148,11 @@ All customizable attributes for ClapFab
         <td>The main onboarding image</td>
     </tr>
     <tr>
+        <td>heroAssetColor</td>
+        <td>Color(0xFF65B0B4)</td>
+        <td>Main onboarding image color</td>
+    </tr>
+    <tr>
         <td>title</td>
         <td>Text('Banks')</td>
         <td>Title of the page</td>
@@ -139,11 +166,6 @@ All customizable attributes for ClapFab
         <td>iconAssetPath</td>
         <td>'assets/wallet.png'</td>
         <td>Icon for the floating bubble</td>
-    </tr>
-    <tr>
-        <td>mainPageRoute</td>
-        <td>'mainPage'</td>
-        <td>Route of the main page</td>
     </tr>
     
 </table>

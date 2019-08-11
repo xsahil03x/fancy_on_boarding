@@ -19,8 +19,8 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 [![Build Status](https://travis-ci.com/xsahil03x/fancy_on_boarding.svg?branch=master)](https://travis-ci.com/xsahil03x/fancy_on_boarding)
 
 ### GIF
-<img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>
-
+<!--<img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>-->
+<img src="./FancyOnBoarding.gif" height="400" alt="GIF"/>
 ## 💻 Installation
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
@@ -110,7 +110,29 @@ import 'package:fancy_on_boarding/page_model.dart';
 
 ## 🎨 Customization and Attributes
 
-All customizable attributes for FancyOnBoarding
+#### FancyOnBoarding attributes
+<table>
+    <th>Attribute Name</th>
+    <th>Example Value</th>
+    <th>Description</th>
+    <tr>
+        <td>pageList</td>
+        <td>List<PageModel></td>
+        <td>The list of pages to be displayed</td>
+    </tr>
+    <tr>
+        <td>mainPageRoute</td>
+        <td>'mainPage'</td>
+        <td>Route of the main page</td>
+    </tr>
+    <tr>
+        <td>buttonText</td>
+        <td>"Get Started"</td>
+        <td>Button text content defaults to "Done"</td>
+    </tr>
+</table>
+
+#### PageModel attributes 
 <table>
     <th>Attribute Name</th>
     <th>Example Value</th>
@@ -126,6 +148,11 @@ All customizable attributes for FancyOnBoarding
         <td>The main onboarding image</td>
     </tr>
     <tr>
+        <td>heroAssetColor</td>
+        <td>Color(0xFF65B0B4)</td>
+        <td>Main onboarding image color</td>
+    </tr>
+    <tr>
         <td>title</td>
         <td>Text('Banks')</td>
         <td>Title of the page</td>
@@ -139,11 +166,6 @@ All customizable attributes for FancyOnBoarding
         <td>iconAssetPath</td>
         <td>'assets/wallet.png'</td>
         <td>Icon for the floating bubble</td>
-    </tr>
-    <tr>
-        <td>mainPageRoute</td>
-        <td>'mainPage'</td>
-        <td>Route of the main page</td>
     </tr>
     
 </table>

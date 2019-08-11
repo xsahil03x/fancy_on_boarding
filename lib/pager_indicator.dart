@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:fancy_on_boarding/page_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PagerIndicator extends StatelessWidget {
   final PagerIndicatorViewModel viewModel;
@@ -121,10 +122,7 @@ class PageBubble extends StatelessWidget {
           ),
           child: Opacity(
             opacity: viewModel.activePercent,
-            child: Image.asset(
-              viewModel.iconAssetPath,
-              color: viewModel.color,
-            ),
+            child: _renderImageAsset(viewModel.iconAssetPath, color: viewModel.color)
           ),
         ),
       ),
@@ -144,4 +142,26 @@ class PageBubbleViewModel {
     this.isHollow,
     this.activePercent,
   );
+}
+
+Widget _renderImageAsset(String assetPath, {double width = 24, double height = 24, Color color = Colors.white}) {
+  if(assetPath.toLowerCase().endsWith(".svg")) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SvgPicture.asset(
+        assetPath,
+        width: width,
+        height: height,
+        color: color,
+        fit: BoxFit.contain,
+      ),
+    );
+  } else {
+    return Image.asset(
+      assetPath,
+      color: color,
+      width: width,
+      height: height,
+    );
+  }
 }

@@ -11,8 +11,12 @@ import 'package:flutter/material.dart';
 class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
   final String mainPageRoute;
+  final String buttonText;
 
-  FancyOnBoarding({@required this.pageList, @required this.mainPageRoute})
+  FancyOnBoarding(
+      {@required this.pageList,
+      @required this.mainPageRoute,
+      this.buttonText = "Done"})
       : assert(pageList.length != 0);
 
   @override
@@ -40,7 +44,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     slideUpdateStream.stream.listen((SlideUpdate event) {
       setState(() {
         if (event.updateType == UpdateType.dragging) {
-          print('Sliding ${event.direction} at ${event.slidePercent}');
+//          print('Sliding ${event.direction} at ${event.slidePercent}');
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
 
@@ -52,7 +56,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
             nextPageIndex = activeIndex;
           }
         } else if (event.updateType == UpdateType.doneDragging) {
-          print('Done dragging.');
+//          print('Done dragging.');
           if (slidePercent > 0.5) {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
@@ -75,11 +79,11 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
           animatedPageDragger.run();
         } else if (event.updateType == UpdateType.animating) {
-          print('Sliding ${event.direction} at ${event.slidePercent}');
+//          print('Sliding ${event.direction} at ${event.slidePercent}');
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
         } else if (event.updateType == UpdateType.doneAnimating) {
-          print('Done animating. Next page index: $nextPageIndex');
+//          print('Done animating. Next page index: $nextPageIndex');
           activeIndex = nextPageIndex;
 
           slideDirection = SlideDirection.none;
@@ -122,8 +126,42 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           canDragRightToLeft: activeIndex < pageList.length - 1,
           slideUpdateStream: this.slideUpdateStream,
         ),
+        Positioned(
+          bottom: 10,
+          right: 10,
+          child: Opacity(
+//        visible: pageList.length-1 == activeIndex,
+            opacity: _getAndPrint(),
+            child: FlatButton(
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              color: const Color(0x88FFFFFF),
+              child: Text(
+                widget.buttonText,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.w800),
+              ),
+              onPressed: () =>
+                  Navigator.pushReplacementNamed(context, widget.mainPageRoute),
+            ),
+          ),
+        )
       ],
     );
+  }
+
+  double _getAndPrint() {
+    final opacity = _getOpacity();
+    print("Opacity: $opacity");
+    return opacity;
+  }
+  double _getOpacity() {
+    if(pageList.length-2 == activeIndex && slideDirection == SlideDirection.rightToLeft) return slidePercent;
+    if(pageList.length-1 == activeIndex && slideDirection == SlideDirection.leftToRight) return 1-slidePercent;
+    if(pageList.length-1 == activeIndex) return 1.0;
+    return 0.0;
   }
 
   @override
