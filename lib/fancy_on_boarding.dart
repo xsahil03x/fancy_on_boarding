@@ -44,7 +44,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     slideUpdateStream.stream.listen((SlideUpdate event) {
       setState(() {
         if (event.updateType == UpdateType.dragging) {
-//          print('Sliding ${event.direction} at ${event.slidePercent}');
+          print('Sliding ${event.direction} at ${event.slidePercent}');
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
 
@@ -56,7 +56,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
             nextPageIndex = activeIndex;
           }
         } else if (event.updateType == UpdateType.doneDragging) {
-//          print('Done dragging.');
+          print('Done dragging.');
           if (slidePercent > 0.5) {
             animatedPageDragger = AnimatedPageDragger(
               slideDirection: slideDirection,
@@ -79,11 +79,11 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
           animatedPageDragger.run();
         } else if (event.updateType == UpdateType.animating) {
-//          print('Sliding ${event.direction} at ${event.slidePercent}');
+          print('Sliding ${event.direction} at ${event.slidePercent}');
           slideDirection = event.direction;
           slidePercent = event.slidePercent;
         } else if (event.updateType == UpdateType.doneAnimating) {
-//          print('Done animating. Next page index: $nextPageIndex');
+          print('Done animating. Next page index: $nextPageIndex');
           activeIndex = nextPageIndex;
 
           slideDirection = SlideDirection.none;
@@ -130,8 +130,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           bottom: 10,
           right: 10,
           child: Opacity(
-//        visible: pageList.length-1 == activeIndex,
-            opacity: _getAndPrint(),
+            opacity: _getOpacity(),
             child: FlatButton(
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -152,11 +151,6 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     );
   }
 
-  double _getAndPrint() {
-    final opacity = _getOpacity();
-    print("Opacity: $opacity");
-    return opacity;
-  }
   double _getOpacity() {
     if(pageList.length-2 == activeIndex && slideDirection == SlideDirection.rightToLeft) return slidePercent;
     if(pageList.length-1 == activeIndex && slideDirection == SlideDirection.leftToRight) return 1-slidePercent;
