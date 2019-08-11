@@ -146,6 +146,21 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                   Navigator.pushReplacementNamed(context, widget.mainPageRoute),
             ),
           ),
+        ),
+        Positioned(
+          top: 22,
+          right: 0,
+          child: FlatButton(
+            child: Text(
+              "Skip",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w800),
+            ),
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, widget.mainPageRoute),
+          ),
         )
       ],
     );
