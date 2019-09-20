@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
-        heroAssetPath: 'assets/hotels.png',
+        heroAssetPath: 'assets/png/hotels.png',
         title: Text('Hotels',
             style: TextStyle(
               fontWeight: FontWeight.w800,
@@ -48,10 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/key.png'),
+        iconAssetPath: 'assets/png/key.png'),
     PageModel(
         color: const Color(0xFF65B0B4),
-        heroAssetPath: 'assets/banks.png',
+        heroAssetPath: 'assets/png/banks.png',
         title: Text('Banks',
             style: TextStyle(
               fontWeight: FontWeight.w800,
@@ -65,10 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/wallet.png'),
+        iconAssetPath: 'assets/png/wallet.png'),
     PageModel(
       color: const Color(0xFF9B90BC),
-      heroAssetPath: 'assets/stores.png',
+      heroAssetPath: 'assets/png/stores.png',
       title: Text('Store',
           style: TextStyle(
             fontWeight: FontWeight.w800,
@@ -81,7 +81,62 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.white,
             fontSize: 18.0,
           )),
-      iconAssetPath: 'assets/shopping_cart.png',
+      iconAssetPath: 'assets/png/shopping_cart.png',
+    ),
+    // SVG Pages Example
+    PageModel(
+        color: const Color(0xFF678FB4),
+        heroAssetPath: 'assets/svg/hotel.svg',
+        title: Text('Hotels SVG',
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              fontSize: 34.0,
+            )),
+        body: Text('All hotels and hostels are sorted by hospitality rating',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            )),
+        iconAssetPath: 'assets/svg/key.svg',
+        heroAssetColor: Colors.white
+    ),
+    PageModel(
+        color: const Color(0xFF65B0B4),
+        heroAssetPath: 'assets/svg/bank.svg',
+        title: Text('Banks SVG',
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              fontSize: 34.0,
+            )),
+        body: Text(
+            'We carefully verify all banks before adding them into the app',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            )),
+        iconAssetPath: 'assets/svg/cards.svg',
+        heroAssetColor: Colors.white
+    ),
+    PageModel(
+      color: const Color(0xFF9B90BC),
+      heroAssetPath: 'assets/svg/store.svg',
+      title: Text('Store SVG',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            color: Colors.white,
+            fontSize: 34.0,
+          )),
+      body: Text('All local stores are categorized for your convenience',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          )),
+      iconAssetPath: 'assets/svg/cart.svg',
     ),
   ];
 
@@ -90,6 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       //Pass pageList and the mainPage route.
       body: FancyOnBoarding(
+        buttonText: "Done",
         pageList: pageList,
         mainPageRoute: '/mainPage',
       ),

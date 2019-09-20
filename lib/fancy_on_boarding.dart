@@ -11,8 +11,12 @@ import 'package:flutter/material.dart';
 class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
   final String mainPageRoute;
+  final String buttonText;
 
-  FancyOnBoarding({@required this.pageList, @required this.mainPageRoute})
+  FancyOnBoarding(
+      {@required this.pageList,
+      @required this.mainPageRoute,
+      this.buttonText = "Done"})
       : assert(pageList.length != 0);
 
   @override
@@ -122,8 +126,51 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           canDragRightToLeft: activeIndex < pageList.length - 1,
           slideUpdateStream: this.slideUpdateStream,
         ),
+        Positioned(
+          bottom: 10,
+          right: 10,
+          child: Opacity(
+            opacity: _getOpacity(),
+            child: FlatButton(
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              color: const Color(0x88FFFFFF),
+              child: Text(
+                widget.buttonText,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.w800),
+              ),
+              onPressed: () =>
+                  Navigator.pushReplacementNamed(context, widget.mainPageRoute),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 22,
+          right: 0,
+          child: FlatButton(
+            child: Text(
+              "Skip",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w800),
+            ),
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, widget.mainPageRoute),
+          ),
+        )
       ],
     );
+  }
+
+  double _getOpacity() {
+    if(pageList.length-2 == activeIndex && slideDirection == SlideDirection.rightToLeft) return slidePercent;
+    if(pageList.length-1 == activeIndex && slideDirection == SlideDirection.leftToRight) return 1-slidePercent;
+    if(pageList.length-1 == activeIndex) return 1.0;
+    return 0.0;
   }
 
   @override
