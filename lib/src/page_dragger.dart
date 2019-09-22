@@ -1,18 +1,16 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:fancy_on_boarding/pager_indicator.dart';
+import 'package:fancy_on_boarding/src/pager_indicator.dart';
 
 class PageDragger extends StatefulWidget {
   final int currentIndex;
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
   final int pageLength;
-  final String mainPageRoute;
   final StreamController<SlideUpdate> slideUpdateStream;
 
   PageDragger({
-    this.mainPageRoute,
     this.pageLength,
     this.currentIndex,
     this.canDragLeftToRight,
@@ -60,16 +58,11 @@ class _PageDraggerState extends State<PageDragger> {
   }
 
   onDragEnd(DragEndDetails details) {
-    if (slideDirection == SlideDirection.none &&
-        widget.currentIndex == widget.pageLength) {
-      Navigator.pushReplacementNamed(context, widget.mainPageRoute);
-    } else {
-      widget.slideUpdateStream.add(SlideUpdate(
-        UpdateType.doneDragging,
-        SlideDirection.none,
-        0.0,
-      ));
-    }
+    widget.slideUpdateStream.add(SlideUpdate(
+      UpdateType.doneDragging,
+      SlideDirection.none,
+      0.0,
+    ));
     dragStart = null;
   }
 

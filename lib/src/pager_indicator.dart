@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:fancy_on_boarding/page_model.dart';
+import 'package:fancy_on_boarding/src/page_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

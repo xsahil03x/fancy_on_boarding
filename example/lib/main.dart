@@ -1,5 +1,4 @@
 import 'package:fancy_on_boarding/fancy_on_boarding.dart';
-import 'package:fancy_on_boarding/page_model.dart';
 import 'package:flutter/material.dart';
 
 import 'second_screen.dart';
@@ -100,8 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: 18.0,
             )),
         iconAssetPath: 'assets/svg/key.svg',
-        heroAssetColor: Colors.white
-    ),
+        heroAssetColor: Colors.white),
     PageModel(
         color: const Color(0xFF65B0B4),
         heroAssetPath: 'assets/svg/bank.svg',
@@ -119,8 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: 18.0,
             )),
         iconAssetPath: 'assets/svg/cards.svg',
-        heroAssetColor: Colors.white
-    ),
+        heroAssetColor: Colors.white),
     PageModel(
       color: const Color(0xFF9B90BC),
       heroAssetPath: 'assets/svg/store.svg',
@@ -145,9 +142,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       //Pass pageList and the mainPage route.
       body: FancyOnBoarding(
-        buttonText: "Done",
+        doneButtonText: "Done",
+        skipButtonText: "Skip",
         pageList: pageList,
-        mainPageRoute: '/mainPage',
+        onDoneButtonPressed: () =>
+            Navigator.of(context).pushReplacementNamed('/mainPage'),
+        onSkipButtonPressed: () =>
+            Navigator.of(context).pushReplacementNamed('/mainPage'),
       ),
     );
   }
