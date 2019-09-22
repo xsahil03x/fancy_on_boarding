@@ -19,8 +19,8 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 [![Build Status](https://travis-ci.com/xsahil03x/fancy_on_boarding.svg?branch=master)](https://travis-ci.com/xsahil03x/fancy_on_boarding)
 
 ### GIF
-<!--<img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>-->
-<img src="./FancyOnBoarding.gif" height="400" alt="GIF"/>
+<img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>
+
 ## 💻 Installation
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
@@ -32,10 +32,9 @@ fancy_on_boarding: <latest_version>
 
 ## ❔ Usage
 
-### Import these classes
+### Import this class
 ```dart
 import 'package:fancy_on_boarding/fancy_on_boarding.dart';
-import 'package:fancy_on_boarding/page_model.dart';
 ```
 
 ### Create a List of PageModel
@@ -95,14 +94,19 @@ import 'package:fancy_on_boarding/page_model.dart';
 ];
 ```
 
-### Pass it into the FancyOnBoarding() method
+### Pass it into the FancyOnBoarding widget
 ```dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FancyOnBoarding(
+        doneButtonText: "Done",
+        skipButtonText: "Skip",
         pageList: pageList,
-        mainPageRoute: '/mainPage',
+        onDoneButtonPressed: () =>
+            Navigator.of(context).pushReplacementNamed('/mainPage'),
+        onSkipButtonPressed: () =>
+            Navigator.of(context).pushReplacementNamed('/mainPage'),
       ),
     );
   }
@@ -121,15 +125,33 @@ import 'package:fancy_on_boarding/page_model.dart';
         <td>The list of pages to be displayed</td>
     </tr>
     <tr>
-        <td>mainPageRoute</td>
-        <td>'mainPage'</td>
-        <td>Route of the main page</td>
+        <td>onDoneButtonPressed</td>
+        <td>(){}</td>
+        <td>Function to be called on pressing done button</td>
+    </tr>
+        <tr>
+        <td>onSkipButtonPressed</td>
+        <td>(){}</td>
+        <td>Function to be called on pressing skip button</td>
     </tr>
     <tr>
-        <td>buttonText</td>
-        <td>"Get Started"</td>
-        <td>Button text content defaults to "Done"</td>
+        <td>doneButtonText</td>
+        <td>"Let's Go"</td>
+        <td>Done button text content defaults to "Done"</td>
     </tr>
+        <tr>
+        <td>skipButtonText</td>
+        <td>"Skip"</td>
+        <td>Skip button text content defaults to "Skip"</td>
+    </tr>
+    </tr>
+        <tr>
+        <td>showSkipButton</td>
+        <td>true</td>
+        <td>Skip button should be visible or not. Defaults to true</td>
+    </tr>
+
+
 </table>
 
 #### PageModel attributes 
