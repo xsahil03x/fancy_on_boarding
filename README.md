@@ -19,7 +19,7 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 [![Build Status](https://travis-ci.com/xsahil03x/fancy_on_boarding.svg?branch=master)](https://travis-ci.com/xsahil03x/fancy_on_boarding)
 
 ### GIF
-<img src="https://user-images.githubusercontent.com/25670178/43687990-53a05526-98fe-11e8-90bd-0fe1a1d9a386.gif" height="400" alt="GIF"/>
+<img src="https://user-images.githubusercontent.com/25670178/65394497-90810a00-ddac-11e9-825d-af3f726ac97f.gif" height="400" alt="GIF"/>
 
 ## 💻 Installation
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
