@@ -1,3 +1,7 @@
+1.3.0
+
+    Add skip and done button.
+    
 1.2.0
 
     Update flutter SDK.
