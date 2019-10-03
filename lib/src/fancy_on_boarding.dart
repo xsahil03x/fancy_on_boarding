@@ -93,7 +93,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                     fontSize: 22.0,
                     fontWeight: FontWeight.w800),
               ),
-              onPressed: widget.onDoneButtonPressed,
+              onPressed:
+                  _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
           ),
         ),
