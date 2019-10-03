@@ -73,18 +73,3 @@ void main() {
     expect(find.text('Banks'), findsNothing);
   });
 }
-
-class _IsVisible extends CustomMatcher {
-  _IsVisible(dynamic matcher)
-      : super('Check if a widget is visible or not', 'isVisible', matcher);
-
-  @override
-  Object featureValueOf(dynamic actual) {
-    final finder = actual as Finder;
-    final result = finder.evaluate().single as Opacity;
-
-    return result.opacity;
-  }
-}
-
-Matcher isVisible(bool value) => _IsVisible(value);
