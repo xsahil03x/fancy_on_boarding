@@ -17,6 +17,7 @@ The source code is **100% Dart**, and everything resides in the [/lib](https://g
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xsahil03x/fancy_on_boarding/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/xsahil03x/fancy_on_boarding.svg?branch=master)](https://travis-ci.com/xsahil03x/fancy_on_boarding)
+[![CodeCov](https://codecov.io/gh/xsahil03x/fancy_on_boarding/branch/master/graph/badge.svg)](https://codecov.io/gh/xsahil03x/fancy_on_boarding)
 
 ### GIF
 <img src="https://user-images.githubusercontent.com/25670178/65394497-90810a00-ddac-11e9-825d-af3f726ac97f.gif" height="400" alt="GIF"/>
@@ -121,7 +122,7 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
     <th>Description</th>
     <tr>
         <td>pageList</td>
-        <td>List<PageModel></td>
+        <td>List&lt;PageModel&gt;</td>
         <td>The list of pages to be displayed</td>
     </tr>
     <tr>
@@ -129,7 +130,7 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
         <td>(){}</td>
         <td>Function to be called on pressing done button</td>
     </tr>
-        <tr>
+    <tr>
         <td>onSkipButtonPressed</td>
         <td>(){}</td>
         <td>Function to be called on pressing skip button</td>
@@ -139,19 +140,16 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
         <td>"Let's Go"</td>
         <td>Done button text content defaults to "Done"</td>
     </tr>
-        <tr>
+    <tr>
         <td>skipButtonText</td>
         <td>"Skip"</td>
         <td>Skip button text content defaults to "Skip"</td>
     </tr>
-    </tr>
-        <tr>
+    <tr>
         <td>showSkipButton</td>
         <td>true</td>
         <td>Skip button should be visible or not. Defaults to true</td>
     </tr>
-
-
 </table>
 
 #### PageModel attributes 
