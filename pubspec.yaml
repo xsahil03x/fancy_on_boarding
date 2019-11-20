@@ -1,18 +1,17 @@
 name: fancy_on_boarding
 description: A Flutter package for a quick, handy and beautiful OnBoarding screen library.
-version: 1.3.0
+version: 1.4.0
 author: Sahil Kumar <xdsahil@gmail.com>
 homepage: https://github.com/xsahil03x/fancy_on_boarding
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.14.1
+  flutter_svg: ^0.15.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  glob: ^1.1.7
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

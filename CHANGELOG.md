@@ -1,3 +1,7 @@
+1.4.0
+
+    Update flutter_svg to ^1.15.0.
+
 1.3.0
 
     Add skip and done button.
