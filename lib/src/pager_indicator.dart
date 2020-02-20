@@ -46,9 +46,11 @@ class PagerIndicator extends StatelessWidget {
     }
 
     final bubbleWidth = 55.0;
-    final baseTranslation =
-        ((viewModel.pages.length * bubbleWidth) / 2) - (bubbleWidth / 2);
-    var translation = baseTranslation - (viewModel.activeIndex * bubbleWidth);
+    final width = MediaQuery
+        .of(context)
+        .size
+        .width / 2;
+    var translation = width - (viewModel.activeIndex * bubbleWidth) - (bubbleWidth/2);
     if (viewModel.slideDirection == SlideDirection.leftToRight) {
       translation += bubbleWidth * viewModel.slidePercent;
     } else if (viewModel.slideDirection == SlideDirection.rightToLeft) {
