@@ -55,17 +55,12 @@ class PagerIndicator extends StatelessWidget {
       translation -= bubbleWidth * viewModel.slidePercent;
     }
 
-    return Column(
-      children: [
-        Expanded(child: Container()),
-        Transform(
-          transform: Matrix4.translationValues(translation, 0.0, 0.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: bubbles,
-          ),
-        ),
-      ],
+    return Transform(
+      transform: Matrix4.translationValues(translation, 0.0, 0.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: bubbles,
+      ),
     );
   }
 }

@@ -13,7 +13,12 @@ class FancyOnBoarding extends StatefulWidget {
   final VoidCallback onDoneButtonPressed;
   final VoidCallback onSkipButtonPressed;
   final String doneButtonText;
+  final ShapeBorder doneButtonShape;
+  final TextStyle doneButtonTextStyle;
+  final Color doneButtonBackgroundColor;
   final String skipButtonText;
+  final TextStyle skipButtonTextStyle;
+  final Color skipButtonColor;
   final bool showSkipButton;
 
   FancyOnBoarding({
@@ -21,7 +26,12 @@ class FancyOnBoarding extends StatefulWidget {
     @required this.onDoneButtonPressed,
     this.onSkipButtonPressed,
     this.doneButtonText = "Done",
+    this.doneButtonShape,
+    this.doneButtonTextStyle,
+    this.doneButtonBackgroundColor,
     this.skipButtonText = "Skip",
+    this.skipButtonTextStyle,
+    this.skipButtonColor,
     this.showSkipButton = true,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
@@ -62,12 +72,15 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
             percentVisible: slidePercent,
           ),
         ),
-        PagerIndicator(
-          viewModel: PagerIndicatorViewModel(
-            pageList,
-            activeIndex,
-            slideDirection,
-            slidePercent,
+        Positioned(
+          bottom: 8.0,
+          child: PagerIndicator(
+            viewModel: PagerIndicatorViewModel(
+              pageList,
+              activeIndex,
+              slideDirection,
+              slidePercent,
+            ),
           ),
         ),
         PageDragger(
@@ -83,36 +96,40 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           child: Opacity(
             opacity: _getOpacity(),
             child: FlatButton(
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0)),
-              color: const Color(0x88FFFFFF),
+              shape: widget.doneButtonShape ?? RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0)),
+              color: widget.doneButtonBackgroundColor ?? const Color(0x88FFFFFF),
               child: Text(
                 widget.doneButtonText,
-                style: TextStyle(
+                style: widget.doneButtonTextStyle ?? const TextStyle(
                     color: Colors.white,
                     fontSize: 22.0,
                     fontWeight: FontWeight.w800),
               ),
               onPressed:
-                  _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
+              _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
           ),
         ),
         widget.showSkipButton
             ? Positioned(
-                top: MediaQuery.of(context).padding.top,
-                right: 0,
-                child: FlatButton(
-                  child: Text(
-                    widget.skipButtonText,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w800),
-                  ),
-                  onPressed: widget.onSkipButtonPressed,
-                ),
-              )
+          top: MediaQuery
+              .of(context)
+              .padding
+              .top,
+          right: 0,
+          child: FlatButton(
+            color: widget.skipButtonColor,
+            child: Text(
+              widget.skipButtonText ,
+              style: widget.skipButtonTextStyle ?? const TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w800,),
+            ),
+            onPressed: widget.onSkipButtonPressed,
+          ),
+        )
             : Offstage()
       ],
     );
