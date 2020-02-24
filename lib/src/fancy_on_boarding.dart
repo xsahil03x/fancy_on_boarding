@@ -20,13 +20,7 @@ class FancyOnBoarding extends StatefulWidget {
     @required this.pageList,
     @required this.onDoneButtonPressed,
     this.onSkipButtonPressed,
-    this.doneButtonText = Text(
-      "Done",
-      style: TextStyle(
-          color: Colors.white,
-          fontSize: 22.0,
-          fontWeight: FontWeight.w800),
-    ),
+    this.doneButtonText,
     this.skipButtonText = "Skip",
     this.showSkipButton = true,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
