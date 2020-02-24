@@ -101,7 +101,14 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
   Widget build(BuildContext context) {
     return Scaffold(
       body: FancyOnBoarding(
-        doneButtonText: "Done",
+        doneButtonText: Text(
+            widget.doneButtonText,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 22.0,
+                fontWeight: FontWeight.w800
+            ),
+        ),
         skipButtonText: "Skip",
         pageList: pageList,
         onDoneButtonPressed: () =>
@@ -137,8 +144,18 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
     </tr>
     <tr>
         <td>doneButtonText</td>
-        <td>"Let's Go"</td>
-        <td>Done button text content defaults to "Done"</td>
+        <td>
+            ```
+                Text(
+                    "Done",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.w800),
+                )
+            '''
+        </td>
+        <td>Done button text content defaults as the example value.</td>
     </tr>
     <tr>
         <td>skipButtonText</td>
