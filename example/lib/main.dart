@@ -149,7 +149,14 @@ class _MyHomePageState extends State<MyHomePage> {
             fontSize: 22.0,
             fontWeight: FontWeight.w800),
         ),
-        skipButtonText: "Skip",
+        skipButtonText: Text(
+            "Skip",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w800
+            ),
+        ),
         pageList: pageList,
         onDoneButtonPressed: () =>
             Navigator.of(context).pushReplacementNamed('/mainPage'),

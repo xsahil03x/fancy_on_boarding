@@ -109,7 +109,14 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
                 fontWeight: FontWeight.w800
             ),
         ),
-        skipButtonText: "Skip",
+        skipButtonText: Text(
+            "Skip",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w800
+            ),
+        ),
         pageList: pageList,
         onDoneButtonPressed: () =>
             Navigator.of(context).pushReplacementNamed('/mainPage'),
@@ -155,12 +162,19 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
                 )
             '''
         </td>
-        <td>Done button text content defaults as the example value.</td>
+        <td>Done button text content</td>
     </tr>
     <tr>
         <td>skipButtonText</td>
-        <td>"Skip"</td>
-        <td>Skip button text content defaults to "Skip"</td>
+        <td>```Text(
+            "Skip",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w800),
+            )```
+        </td>
+        <td>Skip button text content</td>
     </tr>
     <tr>
         <td>showSkipButton</td>

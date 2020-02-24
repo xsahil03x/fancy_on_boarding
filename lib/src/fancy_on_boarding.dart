@@ -13,15 +13,15 @@ class FancyOnBoarding extends StatefulWidget {
   final VoidCallback onDoneButtonPressed;
   final VoidCallback onSkipButtonPressed;
   final Text doneButtonText;
-  final String skipButtonText;
+  final Text skipButtonText;
   final bool showSkipButton;
 
   FancyOnBoarding({
     @required this.pageList,
     @required this.onDoneButtonPressed,
-    this.onSkipButtonPressed,
-    this.doneButtonText,
-    this.skipButtonText = "Skip",
+    @required this.onSkipButtonPressed,
+    @required this.doneButtonText,
+    @required this.skipButtonText,
     this.showSkipButton = true,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
@@ -97,13 +97,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                 top: MediaQuery.of(context).padding.top,
                 right: 0,
                 child: FlatButton(
-                  child: Text(
-                    widget.skipButtonText,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w800),
-                  ),
+                  child: widget.skipButtonText,
                   onPressed: widget.onSkipButtonPressed,
                 ),
               )
