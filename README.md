@@ -140,30 +140,6 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 |skipButtonText|`Text("Skip",style: TextStyle(color: Colors.white,fontSize: 22.0,fontWeight: FontWeight.w800),)`|Skip button text content|
 |showSkipButton|true|Skip button should be visible or not. Defaults to true|
 
-
-|Attribute Name|Example Value|Description|
-|--- |--- |--- |
-|pageList|List<PageModel>|The list of pages to be displayed|
-|onDoneButtonPressed|(){}|Function to be called on pressing done button|
-|onSkipButtonPressed|(){}|Function to be called on pressing skip button|
-|doneButtonText|```dart
-                Text(
-                    "Done",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w800),
-                )``` | Done button text content|
-|skipButtonText|Text(
-            "Skip",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w800),
-            )|Skip button text content|
-|showSkipButton|true|Skip button should be visible or not. Defaults to true|
-
-
 #### PageModel attributes 
 <table>
     <th>Attribute Name</th>
