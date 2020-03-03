@@ -15,10 +15,13 @@ class Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
+        height:MediaQuery.of(context).size.height,
         color: model.color,
         child: Opacity(
           opacity: percentVisible,
-          child: SingleChildScrollView( child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: SingleChildScrollView( 
+            padding: EdgeInsets.only(top:50),
+            child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Transform(
               transform: Matrix4.translationValues(
                   0.0, 50.0 * (1.0 - percentVisible), 0.0),
