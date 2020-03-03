@@ -130,58 +130,39 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 ## 🎨 Customization and Attributes
 
 #### FancyOnBoarding attributes
-<table>
-    <th>Attribute Name</th>
-    <th>Example Value</th>
-    <th>Description</th>
-    <tr>
-        <td>pageList</td>
-        <td>List&lt;PageModel&gt;</td>
-        <td>The list of pages to be displayed</td>
-    </tr>
-    <tr>
-        <td>onDoneButtonPressed</td>
-        <td>(){}</td>
-        <td>Function to be called on pressing done button</td>
-    </tr>
-    <tr>
-        <td>onSkipButtonPressed</td>
-        <td>(){}</td>
-        <td>Function to be called on pressing skip button</td>
-    </tr>
-    <tr>
-        <td>doneButtonText</td>
-        <td>
-            ```
+
+|Attribute Name|Example Value|Description|
+|--- |--- |--- |
+|pageList|List<PageModel>|The list of pages to be displayed|
+|onDoneButtonPressed|(){}|Function to be called on pressing done button|
+|onSkipButtonPressed|(){}|Function to be called on pressing skip button|
+|doneButtonText|`Text("Done",style: TextStyle(color: Colors.white,fontSize: 22.0,fontWeight: FontWeight.w800),)`| Done button text content|
+|skipButtonText|`Text("Skip",style: TextStyle(color: Colors.white,fontSize: 22.0,fontWeight: FontWeight.w800),)`|Skip button text content|
+|showSkipButton|true|Skip button should be visible or not. Defaults to true|
+
+
+|Attribute Name|Example Value|Description|
+|--- |--- |--- |
+|pageList|List<PageModel>|The list of pages to be displayed|
+|onDoneButtonPressed|(){}|Function to be called on pressing done button|
+|onSkipButtonPressed|(){}|Function to be called on pressing skip button|
+|doneButtonText|```dart
                 Text(
                     "Done",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22.0,
                         fontWeight: FontWeight.w800),
-                )
-            '''
-        </td>
-        <td>Done button text content</td>
-    </tr>
-    <tr>
-        <td>skipButtonText</td>
-        <td>```Text(
+                )``` | Done button text content|
+|skipButtonText|Text(
             "Skip",
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
                 fontWeight: FontWeight.w800),
-            )```
-        </td>
-        <td>Skip button text content</td>
-    </tr>
-    <tr>
-        <td>showSkipButton</td>
-        <td>true</td>
-        <td>Skip button should be visible or not. Defaults to true</td>
-    </tr>
-</table>
+            )|Skip button text content|
+|showSkipButton|true|Skip button should be visible or not. Defaults to true|
+
 
 #### PageModel attributes 
 <table>
