@@ -18,7 +18,7 @@ class Page extends StatelessWidget {
         color: model.color,
         child: Opacity(
           opacity: percentVisible,
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: SingleChildScrollView( child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Transform(
               transform: Matrix4.translationValues(
                   0.0, 50.0 * (1.0 - percentVisible), 0.0),
@@ -42,7 +42,7 @@ class Page extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 75.0),
                   child: model.body),
             ),
-          ]),
+          ])),
         ));
   }
 }
