@@ -130,6 +130,23 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 ## 🎨 Customization and Attributes
 
 #### FancyOnBoarding attributes
+
+|Attribute Name|Example Value|Description|
+|--- |--- |--- |
+|pageList|List<PageModel>|The list of pages to be displayed|
+|onDoneButtonPressed|(){}|Function to be called on pressing done button|
+|onSkipButtonPressed|(){}|Function to be called on pressing skip button|
+|doneButtonText|
+                `Text(`
+                    `"Done",`
+                    `style: TextStyle(`
+                        `color: Colors.white,`
+                        `fontSize: 22.0,`
+                        `fontWeight: FontWeight.w800),`
+                `)`|Done button text content|
+|skipButtonText|adasd|Skip button text content|
+|showSkipButton|true|Skip button should be visible or not. Defaults to true|
+
 <table>
     <th>Attribute Name</th>
     <th>Example Value</th>
@@ -152,15 +169,13 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
     <tr>
         <td>doneButtonText</td>
         <td>
-            ```
-                Text(
-                    "Done",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w800),
-                )
-            '''
+         `Text(`
+                    `"Done",`
+                    `style: TextStyle(`
+                        `color: Colors.white,`
+                        `fontSize: 22.0,`
+                        `fontWeight: FontWeight.w800),`
+                `)`
         </td>
         <td>Done button text content</td>
     </tr>
