@@ -20,5 +20,4 @@ class PageModel {
         assert(color != null),
         assert(heroAssetPath != null),
         assert(iconAssetPath != null);
-
 }
