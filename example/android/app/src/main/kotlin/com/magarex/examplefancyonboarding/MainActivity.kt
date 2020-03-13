@@ -1,4 +1,4 @@
-package com.magarex.examplegiffydialog
+package com.magarex.examplefancyonboarding
 
 import android.os.Bundle
 

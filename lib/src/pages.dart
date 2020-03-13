@@ -39,8 +39,7 @@ class Page extends StatelessWidget {
               transform: Matrix4.translationValues(
                   0.0, 30.0 * (1.0 - percentVisible), 0.0),
               child: Padding(
-                  padding: EdgeInsets.only(bottom: 75.0),
-                  child: model.body),
+                  padding: EdgeInsets.only(bottom: 75.0), child: model.body),
             ),
           ]),
         ));

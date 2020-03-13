@@ -46,26 +46,21 @@ class PagerIndicator extends StatelessWidget {
     }
 
     final bubbleWidth = 55.0;
-    final baseTranslation =
-        ((viewModel.pages.length * bubbleWidth) / 2) - (bubbleWidth / 2);
-    var translation = baseTranslation - (viewModel.activeIndex * bubbleWidth);
+    final width = MediaQuery.of(context).size.width / 2;
+    var translation =
+        width - (viewModel.activeIndex * bubbleWidth) - (bubbleWidth / 2);
     if (viewModel.slideDirection == SlideDirection.leftToRight) {
       translation += bubbleWidth * viewModel.slidePercent;
     } else if (viewModel.slideDirection == SlideDirection.rightToLeft) {
       translation -= bubbleWidth * viewModel.slidePercent;
     }
 
-    return Column(
-      children: [
-        Expanded(child: Container()),
-        Transform(
-          transform: Matrix4.translationValues(translation, 0.0, 0.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: bubbles,
-          ),
-        ),
-      ],
+    return Transform(
+      transform: Matrix4.translationValues(translation, 0.0, 0.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: bubbles,
+      ),
     );
   }
 }
@@ -121,9 +116,9 @@ class PageBubble extends StatelessWidget {
             ),
           ),
           child: Opacity(
-            opacity: viewModel.activePercent,
-            child: _renderImageAsset(viewModel.iconAssetPath, color: viewModel.color)
-          ),
+              opacity: viewModel.activePercent,
+              child: _renderImageAsset(viewModel.iconAssetPath,
+                  color: viewModel.color)),
         ),
       ),
     );
@@ -144,8 +139,9 @@ class PageBubbleViewModel {
   );
 }
 
-Widget _renderImageAsset(String assetPath, {double width = 24, double height = 24, Color color = Colors.white}) {
-  if(assetPath.toLowerCase().endsWith(".svg")) {
+Widget _renderImageAsset(String assetPath,
+    {double width = 24, double height = 24, Color color = Colors.white}) {
+  if (assetPath.toLowerCase().endsWith(".svg")) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SvgPicture.asset(
