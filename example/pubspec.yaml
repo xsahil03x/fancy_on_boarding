@@ -16,6 +16,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
+  easy_localization: ^2.0.0
+
   fancy_on_boarding:
     path: ../
 
@@ -47,6 +52,7 @@ flutter:
   assets:
     - assets/png/
     - assets/svg/
+    - assets/langs/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

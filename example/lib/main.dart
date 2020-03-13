@@ -1,15 +1,48 @@
+import 'dart:ui' as ui;
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'second_screen.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(EasyLocalization(
+      child: MyApp(),
+      path: 'assets/langs',
+      supportedLocales: MyApp.list,
+      useOnlyLangCode: true,
+    ));
 
 class MyApp extends StatelessWidget {
+  static const list = [Locale('en', 'US'), Locale('ar', 'TN')];
+
   @override
   Widget build(BuildContext context) {
+    final windowLocale = ui.window.locale;
+    Locale locale;
+    try {
+      final first = MyApp.list
+          ?.firstWhere((l) => l?.languageCode == windowLocale?.languageCode);
+      locale = first != null ? first : Locale('en', 'US');
+    } catch (e) {
+      print(e);
+    }
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        //app-specific localization
+        EasyLocalization
+            .of(context)
+            .delegate,
+      ],
+      supportedLocales: EasyLocalization
+          .of(context)
+          .supportedLocales,
+      locale: locale,
       initialRoute: '/',
       //Add Route to the main Page.
       routes: {'/mainPage': (context) => MainPage()},
@@ -35,13 +68,13 @@ class _MyHomePageState extends State<MyHomePage> {
     PageModel(
         color: const Color(0xFF678FB4),
         heroAssetPath: 'assets/png/hotels.png',
-        title: Text('Hotels',
+        title: Text(tr("main.hotel_title"),
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('All hotels and hostels are sorted by hospitality rating',
+        body: Text(tr("main.hotel_description"),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -51,14 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
     PageModel(
         color: const Color(0xFF65B0B4),
         heroAssetPath: 'assets/png/banks.png',
-        title: Text('Banks',
+        title: Text(tr("main.bank_title"),
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text(
-            'We carefully verify all banks before adding them into the app',
+        body: Text(tr("main.bank_description"),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -68,13 +100,13 @@ class _MyHomePageState extends State<MyHomePage> {
     PageModel(
       color: const Color(0xFF9B90BC),
       heroAssetPath: 'assets/png/stores.png',
-      title: Text('Store',
+      title: Text(tr("main.store_title"),
           style: TextStyle(
             fontWeight: FontWeight.w800,
             color: Colors.white,
             fontSize: 34.0,
           )),
-      body: Text('All local stores are categorized for your convenience',
+      body: Text(tr("main.store_description"),
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
@@ -86,13 +118,13 @@ class _MyHomePageState extends State<MyHomePage> {
     PageModel(
         color: const Color(0xFF678FB4),
         heroAssetPath: 'assets/svg/hotel.svg',
-        title: Text('Hotels SVG',
+        title: Text('${tr("main.hotel_title")} SVG',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('All hotels and hostels are sorted by hospitality rating',
+        body: Text(tr("main.hotel_description"),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -103,14 +135,13 @@ class _MyHomePageState extends State<MyHomePage> {
     PageModel(
         color: const Color(0xFF65B0B4),
         heroAssetPath: 'assets/svg/bank.svg',
-        title: Text('Banks SVG',
+        title: Text('${tr("main.bank_title")} SVG',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text(
-            'We carefully verify all banks before adding them into the app',
+        body: Text(tr("main.bank_description"),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -121,13 +152,13 @@ class _MyHomePageState extends State<MyHomePage> {
     PageModel(
       color: const Color(0xFF9B90BC),
       heroAssetPath: 'assets/svg/store.svg',
-      title: Text('Store SVG',
+      title: Text('${tr("main.store_title")} SVG',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             color: Colors.white,
             fontSize: 34.0,
           )),
-      body: Text('All local stores are categorized for your convenience',
+      body: Text(tr("main.store_description"),
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,

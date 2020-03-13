@@ -5,9 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class PagerIndicator extends StatelessWidget {
   final PagerIndicatorViewModel viewModel;
+  final bool isRtl;
 
   PagerIndicator({
     this.viewModel,
+    this.isRtl,
   });
 
   @override
@@ -56,7 +58,7 @@ class PagerIndicator extends StatelessWidget {
     }
 
     return Transform(
-      transform: Matrix4.translationValues(translation, 0.0, 0.0),
+      transform: Matrix4.translationValues(isRtl? -translation: translation, 0.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: bubbles,

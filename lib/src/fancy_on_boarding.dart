@@ -1,6 +1,7 @@
 library fancy_on_boarding;
 
 import 'dart:async';
+import 'dart:ui' as ui;
 import 'package:fancy_on_boarding/src/page_dragger.dart';
 import 'package:fancy_on_boarding/src/page_reveal.dart';
 import 'package:fancy_on_boarding/src/page_model.dart';
@@ -59,6 +60,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
   @override
   Widget build(BuildContext context) {
+    final isRtl = isRTL(context);
+
     return Stack(
       children: [
         Page(
@@ -75,6 +78,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         Positioned(
           bottom: 8.0,
           child: PagerIndicator(
+            isRtl: isRtl,
             viewModel: PagerIndicatorViewModel(
               pageList,
               activeIndex,
@@ -92,7 +96,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         ),
         Positioned(
           bottom: 8,
-          right: 8,
+          right: isRTL(context)? null: 8,
+          left: isRTL(context)? 8: null,
           child: Opacity(
             opacity: _getOpacity(),
             child: FlatButton(
@@ -117,7 +122,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
               .of(context)
               .padding
               .top,
-          right: 0,
+          right: isRTL(context)? null: 0,
+          left: isRTL(context)? 0: null,
           child: FlatButton(
             color: widget.skipButtonColor,
             child: Text(
@@ -198,5 +204,10 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
   void dispose() {
     slideUpdateStream?.close();
     super.dispose();
+  }
+
+
+  static bool isRTL(BuildContext context) {
+    return ui.window.locale.languageCode.toLowerCase() == "ar";
   }
 }
