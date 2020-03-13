@@ -58,9 +58,10 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     _listenSlideUpdate();
   }
 
+  final isRtl = isRTL();
+
   @override
   Widget build(BuildContext context) {
-    final isRtl = isRTL(context);
 
     return Stack(
       children: [
@@ -96,8 +97,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         ),
         Positioned(
           bottom: 8,
-          right: isRTL(context)? null: 8,
-          left: isRTL(context)? 8: null,
+          right: isRtl? null: 8,
+          left: isRtl? 8: null,
           child: Opacity(
             opacity: _getOpacity(),
             child: FlatButton(
@@ -122,8 +123,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
               .of(context)
               .padding
               .top,
-          right: isRTL(context)? null: 0,
-          left: isRTL(context)? 0: null,
+          right: isRtl? null: 0,
+          left: isRtl? 0: null,
           child: FlatButton(
             color: widget.skipButtonColor,
             child: Text(
@@ -207,7 +208,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
   }
 
 
-  static bool isRTL(BuildContext context) {
+  static bool isRTL() {
     return ui.window.locale.languageCode.toLowerCase() == "ar";
   }
 }
