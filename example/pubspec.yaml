@@ -19,7 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  easy_localization: ^2.0.0
+  easy_localization: ^2.0.0+1
 
   fancy_on_boarding:
     path: ../
