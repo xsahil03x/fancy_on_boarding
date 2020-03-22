@@ -1,0 +1,10 @@
+{
+  "main": {
+    "hotel_title": "Hotels",
+    "hotel_description": "All hotels and hostels are sorted by hospitality rating",
+    "bank_title": "Banks",
+    "bank_description": "We carefully verify all banks before adding them into the app",
+    "store_title": "Store",
+    "store_description": "All local stores are categorized for your convenience"
+  }
+}

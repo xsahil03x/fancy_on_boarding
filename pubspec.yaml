@@ -7,7 +7,7 @@ homepage: https://github.com/xsahil03x/fancy_on_boarding
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.17.2
+  flutter_svg: ^0.17.3+1
 
 dev_dependencies:
   flutter_test:
