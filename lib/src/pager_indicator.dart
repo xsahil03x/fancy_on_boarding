@@ -58,7 +58,8 @@ class PagerIndicator extends StatelessWidget {
     }
 
     return Transform(
-      transform: Matrix4.translationValues(isRtl? -translation: translation, 0.0, 0.0),
+      transform: Matrix4.translationValues(
+          isRtl ? -translation : translation, 0.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: bubbles,

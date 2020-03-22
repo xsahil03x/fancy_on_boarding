@@ -62,7 +62,6 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
   @override
   Widget build(BuildContext context) {
-
     return Stack(
       children: [
         Page(
@@ -97,46 +96,48 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         ),
         Positioned(
           bottom: 8,
-          right: isRtl? null: 8,
-          left: isRtl? 8: null,
+          right: isRtl ? null : 8,
+          left: isRtl ? 8 : null,
           child: Opacity(
             opacity: _getOpacity(),
             child: FlatButton(
-              shape: widget.doneButtonShape ?? RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)),
-              color: widget.doneButtonBackgroundColor ?? const Color(0x88FFFFFF),
+              shape: widget.doneButtonShape ??
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0)),
+              color:
+                  widget.doneButtonBackgroundColor ?? const Color(0x88FFFFFF),
               child: Text(
                 widget.doneButtonText,
-                style: widget.doneButtonTextStyle ?? const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w800),
+                style: widget.doneButtonTextStyle ??
+                    const TextStyle(
+                        color: Colors.white,
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.w800),
               ),
               onPressed:
-              _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
+                  _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
           ),
         ),
         widget.showSkipButton
             ? Positioned(
-          top: MediaQuery
-              .of(context)
-              .padding
-              .top,
-          right: isRtl? null: 0,
-          left: isRtl? 0: null,
-          child: FlatButton(
-            color: widget.skipButtonColor,
-            child: Text(
-              widget.skipButtonText ,
-              style: widget.skipButtonTextStyle ?? const TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w800,),
-            ),
-            onPressed: widget.onSkipButtonPressed,
-          ),
-        )
+                top: MediaQuery.of(context).padding.top,
+                right: isRtl ? null : 0,
+                left: isRtl ? 0 : null,
+                child: FlatButton(
+                  color: widget.skipButtonColor,
+                  child: Text(
+                    widget.skipButtonText,
+                    style: widget.skipButtonTextStyle ??
+                        const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w800,
+                        ),
+                  ),
+                  onPressed: widget.onSkipButtonPressed,
+                ),
+              )
             : Offstage()
       ],
     );
@@ -206,7 +207,6 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     slideUpdateStream?.close();
     super.dispose();
   }
-
 
   static bool isRTL() {
     return ui.window.locale.languageCode.toLowerCase() == "ar";

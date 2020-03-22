@@ -1,3 +1,10 @@
+1.5.0
+
+    Updated flutter_svg to ^0.17.3+1.
+    Fixed overflow when using more the 7 pages.
+    Fixed support for RTL screen.
+    * Thanks to Medyas ["https://github.com/medyas"]
+
 1.4.0
 
     Update flutter_svg to ^1.15.0.
