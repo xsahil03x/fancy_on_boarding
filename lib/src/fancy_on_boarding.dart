@@ -22,6 +22,7 @@ class FancyOnBoarding extends StatefulWidget {
   final TextStyle skipButtonTextStyle;
   final Color skipButtonColor;
   final bool showSkipButton;
+  final double bottomMargin;
 
   FancyOnBoarding({
     @required this.pageList,
@@ -35,6 +36,7 @@ class FancyOnBoarding extends StatefulWidget {
     this.skipButtonTextStyle,
     this.skipButtonColor,
     this.showSkipButton = true,
+    this.bottomMargin = 8.0,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
   @override
@@ -77,7 +79,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           ),
         ),
         Positioned(
-          bottom: 8.0,
+          bottom: widget.bottomMargin,
           child: PagerIndicator(
             isRtl: isRTL,
             viewModel: PagerIndicatorViewModel(
@@ -96,7 +98,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           slideUpdateStream: this.slideUpdateStream,
         ),
         Positioned(
-          bottom: 8,
+          bottom: widget.bottomMargin,
           right: isRTL ? null : 8,
           left: isRTL ? 8 : null,
           child: Opacity(
