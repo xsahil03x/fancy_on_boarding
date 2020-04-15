@@ -21,10 +21,11 @@ class FancyOnBoarding extends StatefulWidget {
   final TextStyle skipButtonTextStyle;
   final Color skipButtonColor;
   final bool showSkipButton;
+  final bool showDoneButton;
 
   FancyOnBoarding({
     @required this.pageList,
-    @required this.onDoneButtonPressed,
+    this.onDoneButtonPressed,
     this.onSkipButtonPressed,
     this.doneButtonText = "Done",
     this.doneButtonShape,
@@ -34,7 +35,8 @@ class FancyOnBoarding extends StatefulWidget {
     this.skipButtonTextStyle,
     this.skipButtonColor,
     this.showSkipButton = true,
-  }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
+    this.showDoneButton = true
+  }) : assert(pageList.length != 0);
 
   @override
   _FancyOnBoardingState createState() => _FancyOnBoardingState();
@@ -94,6 +96,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           canDragRightToLeft: activeIndex < pageList.length - 1,
           slideUpdateStream: this.slideUpdateStream,
         ),
+        widget.showDoneButton ?
         Positioned(
           bottom: 8,
           right: isRtl ? null : 8,
@@ -118,7 +121,9 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                   _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
           ),
-        ),
+        )
+        :
+          Offstage(),
         widget.showSkipButton
             ? Positioned(
                 top: MediaQuery.of(context).padding.top,
