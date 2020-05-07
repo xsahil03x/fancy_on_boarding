@@ -6,8 +6,8 @@ import 'package:fancy_on_boarding/src/page_dragger.dart';
 import 'package:fancy_on_boarding/src/page_reveal.dart';
 import 'package:fancy_on_boarding/src/page_model.dart';
 import 'package:fancy_on_boarding/src/pager_indicator.dart';
-import 'package:fancy_on_boarding/src/pages.dart' as pages;
-import 'package:flutter/material.dart';
+import 'package:fancy_on_boarding/src/pages.dart';
+import 'package:flutter/material.dart' hide Page;
 
 class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
@@ -64,13 +64,13 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        pages.Page(
+        Page(
           model: pageList[activeIndex],
           percentVisible: 1.0,
         ),
         PageReveal(
           revealPercent: slidePercent,
-          child: pages.Page(
+          child: Page(
             model: pageList[nextPageIndex],
             percentVisible: slidePercent,
           ),
