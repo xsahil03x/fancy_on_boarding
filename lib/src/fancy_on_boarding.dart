@@ -2,11 +2,12 @@ library fancy_on_boarding;
 
 import 'dart:async';
 import 'dart:ui' as ui;
+
+import 'package:fancy_on_boarding/src/fancy_page.dart';
 import 'package:fancy_on_boarding/src/page_dragger.dart';
-import 'package:fancy_on_boarding/src/page_reveal.dart';
 import 'package:fancy_on_boarding/src/page_model.dart';
+import 'package:fancy_on_boarding/src/page_reveal.dart';
 import 'package:fancy_on_boarding/src/pager_indicator.dart';
-import 'package:fancy_on_boarding/src/pages.dart';
 import 'package:flutter/material.dart';
 
 class FancyOnBoarding extends StatefulWidget {
@@ -50,6 +51,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
   SlideDirection slideDirection = SlideDirection.none;
   double slidePercent = 0.0;
 
+  bool get isRTL => ui.window.locale.languageCode.toLowerCase() == "ar";
+
   @override
   void initState() {
     super.initState();
@@ -58,19 +61,17 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     _listenSlideUpdate();
   }
 
-  final isRtl = isRTL();
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Page(
+        FancyPage(
           model: pageList[activeIndex],
           percentVisible: 1.0,
         ),
         PageReveal(
           revealPercent: slidePercent,
-          child: Page(
+          child: FancyPage(
             model: pageList[nextPageIndex],
             percentVisible: slidePercent,
           ),
@@ -78,7 +79,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         Positioned(
           bottom: 8.0,
           child: PagerIndicator(
-            isRtl: isRtl,
+            isRtl: isRTL,
             viewModel: PagerIndicatorViewModel(
               pageList,
               activeIndex,
@@ -96,8 +97,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         ),
         Positioned(
           bottom: 8,
-          right: isRtl ? null : 8,
-          left: isRtl ? 8 : null,
+          right: isRTL ? null : 8,
+          left: isRTL ? 8 : null,
           child: Opacity(
             opacity: _getOpacity(),
             child: FlatButton(
@@ -122,8 +123,8 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
         widget.showSkipButton
             ? Positioned(
                 top: MediaQuery.of(context).padding.top,
-                right: isRtl ? null : 0,
-                left: isRtl ? 0 : null,
+                right: isRTL ? null : 0,
+                left: isRTL ? 0 : null,
                 child: FlatButton(
                   color: widget.skipButtonColor,
                   child: Text(
@@ -206,9 +207,5 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
   void dispose() {
     slideUpdateStream?.close();
     super.dispose();
-  }
-
-  static bool isRTL() {
-    return ui.window.locale.languageCode.toLowerCase() == "ar";
   }
 }

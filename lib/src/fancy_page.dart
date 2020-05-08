@@ -2,11 +2,11 @@ import 'package:fancy_on_boarding/src/page_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Page extends StatelessWidget {
+class FancyPage extends StatelessWidget {
   final PageModel model;
   final double percentVisible;
 
-  Page({
+  FancyPage({
     this.model,
     this.percentVisible = 1.0,
   });
