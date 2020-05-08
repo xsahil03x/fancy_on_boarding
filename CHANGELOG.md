@@ -1,3 +1,8 @@
+1.6.0
+
+    Fixed Page class collision with new Navigator 2.0 Page class.
+    Updated flutter_svg to ^0.17.4.
+
 1.5.0
 
     Updated flutter_svg to ^0.17.3+1.
