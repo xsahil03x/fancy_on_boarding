@@ -23,6 +23,8 @@ class FancyOnBoarding extends StatefulWidget {
   final Color skipButtonColor;
   final bool showSkipButton;
   final double bottomMargin;
+  final Widget doneButton;
+  final Widget skipButton;
 
   FancyOnBoarding({
     @required this.pageList,
@@ -37,6 +39,8 @@ class FancyOnBoarding extends StatefulWidget {
     this.skipButtonColor,
     this.showSkipButton = true,
     this.bottomMargin = 8.0,
+    this.doneButton,
+    this.skipButton,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
   @override
@@ -103,23 +107,24 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           left: isRTL ? 8 : null,
           child: Opacity(
             opacity: _getOpacity(),
-            child: FlatButton(
-              shape: widget.doneButtonShape ??
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0)),
-              color:
-                  widget.doneButtonBackgroundColor ?? const Color(0x88FFFFFF),
-              child: Text(
-                widget.doneButtonText,
-                style: widget.doneButtonTextStyle ??
-                    const TextStyle(
-                        color: Colors.white,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w800),
-              ),
-              onPressed:
-                  _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
-            ),
+            child: widget.doneButton ??
+                FlatButton(
+                  shape: widget.doneButtonShape ??
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                  color: widget.doneButtonBackgroundColor ??
+                      const Color(0x88FFFFFF),
+                  child: Text(
+                    widget.doneButtonText,
+                    style: widget.doneButtonTextStyle ??
+                        const TextStyle(
+                            color: Colors.white,
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.w800),
+                  ),
+                  onPressed:
+                      _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
+                ),
           ),
         ),
         widget.showSkipButton
@@ -127,19 +132,20 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                 top: MediaQuery.of(context).padding.top,
                 right: isRTL ? null : 0,
                 left: isRTL ? 0 : null,
-                child: FlatButton(
-                  color: widget.skipButtonColor,
-                  child: Text(
-                    widget.skipButtonText,
-                    style: widget.skipButtonTextStyle ??
-                        const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w800,
-                        ),
-                  ),
-                  onPressed: widget.onSkipButtonPressed,
-                ),
+                child: widget.skipButton ??
+                    FlatButton(
+                      color: widget.skipButtonColor,
+                      child: Text(
+                        widget.skipButtonText,
+                        style: widget.skipButtonTextStyle ??
+                            const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w800,
+                            ),
+                      ),
+                      onPressed: widget.onSkipButtonPressed,
+                    ),
               )
             : Offstage()
       ],
