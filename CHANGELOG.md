@@ -1,3 +1,11 @@
+1.7.0
+
+    Added support for network image.
+    Added support for custom skip, Done button.
+    Added support for iconWidget.
+    Added support for bottomMargin.
+    Updated flutter_svg to ^0.19.1.
+
 1.6.0
 
     Fixed Page class collision with new Navigator 2.0 Page class.
