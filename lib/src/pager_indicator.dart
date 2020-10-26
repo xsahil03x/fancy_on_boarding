@@ -40,10 +40,11 @@ class PagerIndicator extends StatelessWidget {
       bubbles.add(
         PageBubble(
           viewModel: PageBubbleViewModel(
-            page.iconImagePath,
-            page.color,
-            isHollow,
-            percentActive,
+            iconAssetPath: page.iconImagePath,
+            icon: page.icon,
+            color: page.color,
+            isHollow: isHollow,
+            activePercent: percentActive,
           ),
         ),
       );
@@ -122,10 +123,12 @@ class PageBubble extends StatelessWidget {
           ),
           child: Opacity(
             opacity: viewModel.activePercent,
-            child: FancyImage(
-              image: viewModel.iconAssetPath,
-              color: viewModel.color,
-            ),
+            child: viewModel.icon != null
+                ? viewModel.icon
+                : FancyImage(
+                    image: viewModel.iconAssetPath,
+                    color: viewModel.color,
+                  ),
           ),
         ),
       ),
@@ -135,14 +138,19 @@ class PageBubble extends StatelessWidget {
 
 class PageBubbleViewModel {
   final String iconAssetPath;
+  final Icon icon;
   final Color color;
   final bool isHollow;
   final double activePercent;
 
-  PageBubbleViewModel(
+  const PageBubbleViewModel({
     this.iconAssetPath,
-    this.color,
-    this.isHollow,
-    this.activePercent,
-  );
+    this.icon,
+    @required this.isHollow,
+    @required this.activePercent,
+    @required this.color,
+  }) : assert(
+            (iconAssetPath != null && icon == null) ||
+                (iconAssetPath == null && icon != null),
+            'Cannot provide both icon, iconImagePath');
 }

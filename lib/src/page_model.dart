@@ -7,6 +7,7 @@ class PageModel {
   final Widget title;
   final Widget body;
   final String iconImagePath;
+  final Icon icon;
 
   PageModel({
     @required this.color,
@@ -14,10 +15,14 @@ class PageModel {
     this.heroImageColor,
     this.title,
     this.body,
-    @required this.iconImagePath,
+    this.iconImagePath,
+    this.icon,
   })  : assert(title != null),
         assert(body != null),
         assert(color != null),
         assert(heroImagePath != null),
-        assert(iconImagePath != null);
+        assert(
+            (iconImagePath != null && icon == null) ||
+                (iconImagePath == null && icon != null),
+            'Cannot provide both icon, iconImagePath');
 }
