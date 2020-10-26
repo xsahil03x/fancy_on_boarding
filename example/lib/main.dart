@@ -80,7 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.white,
             fontSize: 18.0,
           )),
-      iconImagePath: 'assets/png/shopping_cart.png',
+      icon: Icon(
+        Icons.shopping_cart,
+        color: const Color(0xFF9B90BC),
+      ),
     ),
     // SVG Pages Example
     PageModel(
