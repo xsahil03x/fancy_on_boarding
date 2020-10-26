@@ -41,10 +41,10 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
 ### Create a List of PageModel
 
 ```dart
- final pageList = [
+  final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
-        heroAssetPath: 'assets/hotels.png',
+        heroImagePath: 'assets/png/hotels.png',
         title: Text('Hotels',
             style: TextStyle(
               fontWeight: FontWeight.w800,
@@ -57,10 +57,10 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/key.png'),
+        iconImagePath: 'assets/png/key.png'),
     PageModel(
         color: const Color(0xFF65B0B4),
-        heroAssetPath: 'assets/banks.png',
+        heroImagePath: 'assets/png/banks.png',
         title: Text('Banks',
             style: TextStyle(
               fontWeight: FontWeight.w800,
@@ -74,10 +74,10 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/wallet.png'),
+        iconImagePath: 'assets/png/wallet.png'),
     PageModel(
       color: const Color(0xFF9B90BC),
-      heroAssetPath: 'assets/stores.png',
+      heroImagePath: 'assets/png/stores.png',
       title: Text('Store',
           style: TextStyle(
             fontWeight: FontWeight.w800,
@@ -90,9 +90,65 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
             color: Colors.white,
             fontSize: 18.0,
           )),
-      iconAssetPath: 'assets/shopping_cart.png',
+      icon: Icon(
+        Icons.shopping_cart,
+        color: const Color(0xFF9B90BC),
+      ),
     ),
-];
+    // SVG Pages Example
+    PageModel(
+        color: const Color(0xFF678FB4),
+        heroImagePath: 'assets/svg/hotel.svg',
+        title: Text('Hotels SVG',
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              fontSize: 34.0,
+            )),
+        body: Text('All hotels and hostels are sorted by hospitality rating',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            )),
+        iconImagePath: 'assets/svg/key.svg',
+        heroImageColor: Colors.white),
+    PageModel(
+        color: const Color(0xFF65B0B4),
+        heroImagePath: 'assets/svg/bank.svg',
+        title: Text('Banks SVG',
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              fontSize: 34.0,
+            )),
+        body: Text(
+            'We carefully verify all banks before adding them into the app',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            )),
+        iconImagePath: 'assets/svg/cards.svg',
+        heroImageColor: Colors.white),
+    PageModel(
+      color: const Color(0xFF9B90BC),
+      heroImagePath: 'assets/svg/store.svg',
+      title: Text('Store SVG',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            color: Colors.white,
+            fontSize: 34.0,
+          )),
+      body: Text('All local stores are categorized for your convenience',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          )),
+      iconImagePath: 'assets/svg/cart.svg',
+    ),
+  ];
 ```
 
 ### Pass it into the FancyOnBoarding widget
@@ -150,6 +206,21 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
         <td>true</td>
         <td>Skip button should be visible or not. Defaults to true</td>
     </tr>
+    <tr>
+        <td>bottomMargin</td>
+        <td>8.0</td>
+        <td>Indicator bottom margin. Defaults to 8.0</td>
+    </tr>
+    <tr>
+        <td>doneButton</td>
+        <td>Button(onPressed:(){},child:Text('Done'))</td>
+        <td>Custom DoneButton. Will replace default doneButton if provided</td>
+    </tr>
+    <tr>
+        <td>skipButton</td>
+        <td>Button(onPressed:(){},child:Text('Skip'))</td>
+        <td>Custom SkipButton. Will replace default doneButton if provided</td>
+    </tr>
 </table>
 
 #### PageModel attributes 
@@ -186,6 +257,11 @@ import 'package:fancy_on_boarding/fancy_on_boarding.dart';
         <td>iconAssetPath</td>
         <td>'assets/wallet.png'</td>
         <td>Icon for the floating bubble</td>
+    </tr>
+    <tr>
+        <td>icon</td>
+        <td>Icon(Icons.shopping_cart)</td>
+        <td>Icon for the floating bubble, Will replace 'iconAssetPath' if provided</td>
     </tr>
     
 </table>
