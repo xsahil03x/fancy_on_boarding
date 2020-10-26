@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class PageModel {
   final Color color;
-  final String heroAssetPath;
-  final Color heroAssetColor;
+  final String heroImagePath;
+  final Color heroImageColor;
   final Widget title;
   final Widget body;
-  final String iconAssetPath;
+  final String iconImagePath;
 
   PageModel({
     @required this.color,
-    @required this.heroAssetPath,
-    this.heroAssetColor,
+    @required this.heroImagePath,
+    this.heroImageColor,
     this.title,
     this.body,
-    @required this.iconAssetPath,
+    @required this.iconImagePath,
   })  : assert(title != null),
         assert(body != null),
         assert(color != null),
-        assert(heroAssetPath != null),
-        assert(iconAssetPath != null);
+        assert(heroImagePath != null),
+        assert(iconImagePath != null);
 }

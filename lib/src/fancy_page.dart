@@ -1,6 +1,7 @@
 import 'package:fancy_on_boarding/src/page_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'fancy_image.dart';
 
 class FancyPage extends StatelessWidget {
   final PageModel model;
@@ -24,8 +25,12 @@ class FancyPage extends StatelessWidget {
                   0.0, 50.0 * (1.0 - percentVisible), 0.0),
               child: Padding(
                 padding: EdgeInsets.only(bottom: 25.0),
-                child: _renderImageAsset(model.heroAssetPath,
-                    width: 200, height: 200, color: model.heroAssetColor),
+                child: FancyImage(
+                  image: model.heroImagePath,
+                  width: 200,
+                  height: 200,
+                  color: model.heroImageColor,
+                ),
               ),
             ),
             Transform(
@@ -43,24 +48,5 @@ class FancyPage extends StatelessWidget {
             ),
           ]),
         ));
-  }
-}
-
-Widget _renderImageAsset(String assetPath,
-    {double width = 24, double height = 24, Color color}) {
-  if (assetPath.toLowerCase().endsWith(".svg")) {
-    return SvgPicture.asset(
-      assetPath,
-      width: width,
-      height: height,
-      color: color,
-    );
-  } else {
-    return Image.asset(
-      assetPath,
-      color: color,
-      width: width,
-      height: height,
-    );
   }
 }

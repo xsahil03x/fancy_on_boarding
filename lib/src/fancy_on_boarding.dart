@@ -106,7 +106,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           right: isRTL ? null : 8,
           left: isRTL ? 8 : null,
           child: Opacity(
-            opacity: _getOpacity(),
+            opacity: opacity,
             child: widget.doneButton ??
                 FlatButton(
                   shape: widget.doneButtonShape ??
@@ -123,7 +123,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                             fontWeight: FontWeight.w800),
                   ),
                   onPressed:
-                      _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
+                      opacity == 1.0 ? widget.onDoneButtonPressed : () {},
                 ),
           ),
         ),
@@ -202,7 +202,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
     });
   }
 
-  double _getOpacity() {
+  double get opacity {
     if (pageList.length - 2 == activeIndex &&
         slideDirection == SlideDirection.rightToLeft) return slidePercent;
     if (pageList.length - 1 == activeIndex &&
