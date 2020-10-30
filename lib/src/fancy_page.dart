@@ -27,8 +27,8 @@ class FancyPage extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 25.0),
                 child: FancyImage(
                   image: model.heroImagePath,
-                  width: 200,
-                  height: 200,
+                  width: 280,
+                  height: 280,
                   color: model.heroImageColor,
                 ),
               ),
