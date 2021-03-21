@@ -8,7 +8,7 @@ class FancyPage extends StatelessWidget {
   final double percentVisible;
 
   FancyPage({
-    this.model,
+    required this.model,
     this.percentVisible = 1.0,
   });
 
@@ -26,9 +26,9 @@ class FancyPage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(bottom: 25.0),
                 child: FancyImage(
-                  image: model.heroImagePath,
                   width: 200,
                   height: 200,
+                  image: model.heroImagePath,
                   color: model.heroImageColor,
                 ),
               ),

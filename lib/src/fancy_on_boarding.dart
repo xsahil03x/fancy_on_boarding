@@ -1,7 +1,8 @@
 library fancy_on_boarding;
 
 import 'dart:async';
-import 'dart:ui' as ui;
+import 'system_language_code/system_language_code.dart'
+    if (dart.library.html) 'system_language_code/system_language_code_web.dart';
 
 import 'package:fancy_on_boarding/src/fancy_page.dart';
 import 'package:fancy_on_boarding/src/page_dragger.dart';
@@ -13,22 +14,23 @@ import 'package:flutter/material.dart';
 class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
   final VoidCallback onDoneButtonPressed;
-  final VoidCallback onSkipButtonPressed;
+  final VoidCallback? onSkipButtonPressed;
   final String doneButtonText;
-  final ShapeBorder doneButtonShape;
-  final TextStyle doneButtonTextStyle;
-  final Color doneButtonBackgroundColor;
+  final ShapeBorder? doneButtonShape;
+  final TextStyle? doneButtonTextStyle;
+  final Color? doneButtonBackgroundColor;
   final String skipButtonText;
-  final TextStyle skipButtonTextStyle;
-  final Color skipButtonColor;
+  final TextStyle? skipButtonTextStyle;
+  final Color? skipButtonColor;
   final bool showSkipButton;
   final double bottomMargin;
-  final Widget doneButton;
-  final Widget skipButton;
+  final Widget? doneButton;
+  final Widget? skipButton;
 
   FancyOnBoarding({
-    @required this.pageList,
-    @required this.onDoneButtonPressed,
+    Key? key,
+    required this.pageList,
+    required this.onDoneButtonPressed,
     this.onSkipButtonPressed,
     this.doneButtonText = "Done",
     this.doneButtonShape,
@@ -41,7 +43,8 @@ class FancyOnBoarding extends StatefulWidget {
     this.bottomMargin = 8.0,
     this.doneButton,
     this.skipButton,
-  }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
+  })  : assert(pageList.length != 0),
+        super(key: key);
 
   @override
   _FancyOnBoardingState createState() => _FancyOnBoardingState();
@@ -49,21 +52,19 @@ class FancyOnBoarding extends StatefulWidget {
 
 class _FancyOnBoardingState extends State<FancyOnBoarding>
     with TickerProviderStateMixin {
-  StreamController<SlideUpdate> slideUpdateStream;
-  AnimatedPageDragger animatedPageDragger;
-  List<PageModel> pageList;
+  final slideUpdateStream = StreamController<SlideUpdate>();
+  late AnimatedPageDragger animatedPageDragger;
+  late final List<PageModel> pageList = widget.pageList;
   int activeIndex = 0;
   int nextPageIndex = 0;
   SlideDirection slideDirection = SlideDirection.none;
   double slidePercent = 0.0;
 
-  bool get isRTL => ui.window.locale.languageCode.toLowerCase() == "ar";
+  bool get isRTL => systemLanguageCode.toLowerCase() == "ar";
 
   @override
   void initState() {
     super.initState();
-    this.pageList = widget.pageList;
-    this.slideUpdateStream = StreamController<SlideUpdate>();
     _listenSlideUpdate();
   }
 
@@ -99,7 +100,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           currentIndex: activeIndex,
           canDragLeftToRight: activeIndex > 0,
           canDragRightToLeft: activeIndex < pageList.length - 1,
-          slideUpdateStream: this.slideUpdateStream,
+          onSlideUpdate: slideUpdateStream.add,
         ),
         Positioned(
           bottom: widget.bottomMargin,
@@ -172,7 +173,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.open,
               slidePercent: slidePercent,
-              slideUpdateStream: slideUpdateStream,
+              onSlideUpdate: slideUpdateStream.add,
               vsync: this,
             );
           } else {
@@ -180,7 +181,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
               slideDirection: slideDirection,
               transitionGoal: TransitionGoal.close,
               slidePercent: slidePercent,
-              slideUpdateStream: slideUpdateStream,
+              onSlideUpdate: slideUpdateStream.add,
               vsync: this,
             );
             nextPageIndex = activeIndex;
@@ -213,7 +214,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
 
   @override
   void dispose() {
-    slideUpdateStream?.close();
+    slideUpdateStream.close();
     super.dispose();
   }
 }

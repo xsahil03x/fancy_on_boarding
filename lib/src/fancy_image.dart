@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class FancyImage extends StatelessWidget {
   const FancyImage({
-    Key key,
-    @required this.image,
+    Key? key,
+    required this.image,
     this.width = 24,
     this.height = 24,
     this.color = Colors.white,
@@ -13,7 +13,7 @@ class FancyImage extends StatelessWidget {
   final String image;
   final double width;
   final double height;
-  final Color color;
+  final Color? color;
 
   bool get isUrl => Uri.parse(image).isAbsolute;
 

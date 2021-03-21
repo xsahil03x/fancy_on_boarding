@@ -6,8 +6,8 @@ class PageReveal extends StatelessWidget {
   final Widget child;
 
   PageReveal({
-    this.revealPercent,
-    this.child,
+    required this.revealPercent,
+    required this.child,
   });
 
   @override

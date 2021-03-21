@@ -1,21 +1,22 @@
-import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:fancy_on_boarding/src/pager_indicator.dart';
+
+import 'pager_indicator.dart';
 
 class PageDragger extends StatefulWidget {
   final int currentIndex;
   final bool canDragLeftToRight;
   final bool canDragRightToLeft;
   final int pageLength;
-  final StreamController<SlideUpdate> slideUpdateStream;
+  final void Function(SlideUpdate update)? onSlideUpdate;
 
   PageDragger({
-    this.pageLength,
-    this.currentIndex,
-    this.canDragLeftToRight,
-    this.canDragRightToLeft,
-    this.slideUpdateStream,
+    required this.pageLength,
+    required this.currentIndex,
+    required this.canDragLeftToRight,
+    required this.canDragRightToLeft,
+    required this.onSlideUpdate,
   });
 
   @override
@@ -25,9 +26,8 @@ class PageDragger extends StatefulWidget {
 class _PageDraggerState extends State<PageDragger> {
   static const FULL_TRANSITION_PX = 300.0;
 
-  int nextPageIndex;
-  Offset dragStart;
-  SlideDirection slideDirection;
+  Offset? dragStart;
+  late SlideDirection slideDirection;
   double slidePercent = 0.0;
 
   onDragStart(DragStartDetails details) {
@@ -37,7 +37,7 @@ class _PageDraggerState extends State<PageDragger> {
   onDragUpdate(DragUpdateDetails details) {
     if (dragStart != null) {
       final newPosition = details.globalPosition;
-      final dx = dragStart.dx - newPosition.dx;
+      final dx = dragStart!.dx - newPosition.dx;
       if (dx > 0.0 && widget.canDragRightToLeft) {
         slideDirection = SlideDirection.rightToLeft;
       } else if (dx < 0.0 && widget.canDragLeftToRight) {
@@ -52,13 +52,14 @@ class _PageDraggerState extends State<PageDragger> {
         slidePercent = 0.0;
       }
 
-      widget.slideUpdateStream
-          .add(SlideUpdate(UpdateType.dragging, slideDirection, slidePercent));
+      widget.onSlideUpdate?.call(
+        SlideUpdate(UpdateType.dragging, slideDirection, slidePercent),
+      );
     }
   }
 
   onDragEnd(DragEndDetails details) {
-    widget.slideUpdateStream.add(SlideUpdate(
+    widget.onSlideUpdate?.call(SlideUpdate(
       UpdateType.doneDragging,
       SlideDirection.none,
       0.0,
@@ -79,17 +80,17 @@ class _PageDraggerState extends State<PageDragger> {
 class AnimatedPageDragger {
   static const PERCENT_PER_MILLISECOND = 0.005;
 
-  final slideDirection;
-  final transitionGoal;
+  final SlideDirection slideDirection;
+  final TransitionGoal transitionGoal;
 
-  AnimationController completionAnimationController;
+  late final AnimationController completionAnimationController;
 
   AnimatedPageDragger({
-    this.slideDirection,
-    this.transitionGoal,
-    slidePercent,
-    StreamController<SlideUpdate> slideUpdateStream,
-    TickerProvider vsync,
+    required this.slideDirection,
+    required this.transitionGoal,
+    required double slidePercent,
+    required TickerProvider vsync,
+    void Function(SlideUpdate update)? onSlideUpdate,
   }) {
     final startSlidePercent = slidePercent;
     var endSlidePercent;
@@ -113,9 +114,9 @@ class AnimatedPageDragger {
               startSlidePercent,
               endSlidePercent,
               completionAnimationController.value,
-            );
+            )!;
 
-            slideUpdateStream.add(SlideUpdate(
+            onSlideUpdate?.call(SlideUpdate(
               UpdateType.animating,
               slideDirection,
               slidePercent,
@@ -123,7 +124,7 @@ class AnimatedPageDragger {
           })
           ..addStatusListener((AnimationStatus status) {
             if (status == AnimationStatus.completed) {
-              slideUpdateStream.add(SlideUpdate(
+              onSlideUpdate?.call(SlideUpdate(
                 UpdateType.doneAnimating,
                 slideDirection,
                 endSlidePercent,
@@ -132,13 +133,9 @@ class AnimatedPageDragger {
           });
   }
 
-  run() {
-    completionAnimationController.forward(from: 0.0);
-  }
+  void run() => completionAnimationController.forward(from: 0.0);
 
-  dispose() {
-    completionAnimationController.dispose();
-  }
+  void dispose() => completionAnimationController.dispose();
 }
 
 enum TransitionGoal {

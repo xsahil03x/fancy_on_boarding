@@ -10,8 +10,8 @@ class PagerIndicator extends StatelessWidget {
   final bool isRtl;
 
   PagerIndicator({
-    this.viewModel,
-    this.isRtl,
+    required this.viewModel,
+    required this.isRtl,
   });
 
   @override
@@ -94,9 +94,7 @@ class PagerIndicatorViewModel {
 class PageBubble extends StatelessWidget {
   final PageBubbleViewModel viewModel;
 
-  PageBubble({
-    this.viewModel,
-  });
+  const PageBubble({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +124,7 @@ class PageBubble extends StatelessWidget {
             child: viewModel.icon != null
                 ? viewModel.icon
                 : FancyImage(
-                    image: viewModel.iconAssetPath,
+                    image: viewModel.iconAssetPath!,
                     color: viewModel.color,
                   ),
           ),
@@ -137,20 +135,25 @@ class PageBubble extends StatelessWidget {
 }
 
 class PageBubbleViewModel {
-  final String iconAssetPath;
-  final Icon icon;
+  final String? iconAssetPath;
+  final Icon? icon;
   final Color color;
   final bool isHollow;
   final double activePercent;
 
   const PageBubbleViewModel({
-    this.iconAssetPath,
+    required this.isHollow,
+    required this.activePercent,
+    required this.color,
     this.icon,
-    @required this.isHollow,
-    @required this.activePercent,
-    @required this.color,
-  }) : assert(
-            (iconAssetPath != null && icon == null) ||
-                (iconAssetPath == null && icon != null),
-            'Cannot provide both icon, iconImagePath');
+    this.iconAssetPath,
+  })  : assert(
+          iconAssetPath != null || icon != null,
+          'Please provide at least icon or iconImagePath',
+        ),
+        assert(
+          (iconAssetPath != null && icon == null) ||
+              (iconAssetPath == null && icon != null),
+          'Cannot provide both icon, iconImagePath',
+        );
 }
