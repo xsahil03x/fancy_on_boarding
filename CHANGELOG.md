@@ -1,3 +1,7 @@
+1.8.0-nullsafety.0
+
+    Initial release with null safety
+
 1.7.0
 
     Added support for network image.
