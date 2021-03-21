@@ -13,10 +13,11 @@ import 'package:flutter/material.dart';
 
 class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
+
   final VoidCallback onDoneButtonPressed;
   final VoidCallback? onSkipButtonPressed;
   final String doneButtonText;
-  final ShapeBorder? doneButtonShape;
+  final OutlinedBorder? doneButtonShape;
   final TextStyle? doneButtonTextStyle;
   final Color? doneButtonBackgroundColor;
   final String skipButtonText;
@@ -109,12 +110,25 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           child: Opacity(
             opacity: opacity,
             child: widget.doneButton ??
-                FlatButton(
-                  shape: widget.doneButtonShape ??
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                  color: widget.doneButtonBackgroundColor ??
-                      const Color(0x88FFFFFF),
+                TextButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      const EdgeInsets.symmetric(
+                        vertical: 0.0,
+                        horizontal: 16.0,
+                      ),
+                    ),
+                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                      widget.doneButtonShape ??
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      widget.doneButtonBackgroundColor ??
+                          const Color(0x88FFFFFF),
+                    ),
+                  ),
                   child: Text(
                     widget.doneButtonText,
                     style: widget.doneButtonTextStyle ??
@@ -134,8 +148,13 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                 right: isRTL ? null : 0,
                 left: isRTL ? 0 : null,
                 child: widget.skipButton ??
-                    FlatButton(
-                      color: widget.skipButtonColor,
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: widget.skipButtonColor != null
+                            ? MaterialStateProperty.all<Color>(
+                                widget.doneButtonBackgroundColor!)
+                            : null,
+                      ),
                       child: Text(
                         widget.skipButtonText,
                         style: widget.skipButtonTextStyle ??
