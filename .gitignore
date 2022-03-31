@@ -31,3 +31,5 @@ GeneratedPluginRegistrant.m
 GeneratedPluginRegistrant.java
 build/
 .flutter-plugins
+
+example/ios/Flutter/flutter_export_environment.sh
