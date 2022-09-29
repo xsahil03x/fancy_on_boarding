@@ -24,13 +24,21 @@ class FancyImage extends StatelessWidget {
     if (isUrl)
       return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.network(
-          image,
-          width: width,
-          height: height,
-          color: color,
-          fit: BoxFit.contain,
-        ),
+        child: isSvg
+            ? SvgPicture.asset(
+                image,
+                width: width,
+                height: height,
+                color: color,
+                fit: BoxFit.contain,
+              )
+            : Image.network(
+                image,
+                width: width,
+                height: height,
+                color: color,
+                fit: BoxFit.contain,
+              ),
       );
     if (isSvg)
       return Padding(

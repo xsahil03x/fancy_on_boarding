@@ -103,20 +103,16 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           canDragRightToLeft: activeIndex < pageList.length - 1,
           onSlideUpdate: slideUpdateStream.add,
         ),
-        Positioned(
+        PositionedDirectional(
           bottom: widget.bottomMargin,
-          right: isRTL ? null : 8,
-          left: isRTL ? 8 : null,
+          end: 8,
           child: Opacity(
             opacity: opacity,
             child: widget.doneButton ??
                 TextButton(
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                      const EdgeInsets.symmetric(
-                        vertical: 0.0,
-                        horizontal: 16.0,
-                      ),
+                      const EdgeInsets.symmetric(horizontal: 16.0),
                     ),
                     shape: MaterialStateProperty.all<OutlinedBorder>(
                       widget.doneButtonShape ??
@@ -138,7 +134,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                             fontWeight: FontWeight.w800),
                   ),
                   onPressed:
-                      opacity == 1.0 ? widget.onDoneButtonPressed : () {},
+                      opacity == 1.0 ? widget.onDoneButtonPressed : null,
                 ),
           ),
         ),
@@ -167,7 +163,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                       onPressed: widget.onSkipButtonPressed,
                     ),
               )
-            : Offstage()
+            : SizedBox.shrink(),
       ],
     );
   }
