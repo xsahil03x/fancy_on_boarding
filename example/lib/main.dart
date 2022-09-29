@@ -6,21 +6,28 @@ import 'second_screen.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: MyHomePage.routeName,
       //Add Route to the main Page.
-      routes: {'/mainPage': (context) => MainPage()},
+      routes: {
+        MyHomePage.routeName: (context) =>
+            MyHomePage(title: 'Fancy OnBoarding HomePage'),
+        MainPage.routeName: (context) => MainPage(),
+      },
       title: 'Fancy OnBoarding Demo',
       theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'Nunito'),
-      home: MyHomePage(title: 'Fancy OnBoarding HomePage'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  static const String routeName = '/';
+
   MyHomePage({
     Key? key,
     required this.title,
@@ -152,9 +159,9 @@ class _MyHomePageState extends State<MyHomePage> {
         skipButtonText: "Skip",
         pageList: pageList,
         onDoneButtonPressed: () =>
-            Navigator.of(context).pushReplacementNamed('/mainPage'),
+            Navigator.of(context).pushReplacementNamed(MainPage.routeName),
         onSkipButtonPressed: () =>
-            Navigator.of(context).pushReplacementNamed('/mainPage'),
+            Navigator.of(context).pushReplacementNamed(MainPage.routeName),
       ),
     );
   }
